@@ -31,18 +31,51 @@ const Navbar = () => {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex gap-8 text-blue-950 font-medium text-2xl">
-            <li><Link to="/gallery" className="hover:underline">Gallery</Link></li>
-            <li><Link to="/about" className="hover:underline">About</Link></li>
-            <li><Link to="/contact" className="hover:underline">Contact</Link></li>
-            <li><Link to="/student-corner" className="hover:underline">Student Corner</Link></li>
+            <li className="relative group">
+            <Link
+                  to="/gallery"
+                  className="relative inline-block"
+            >
+                  Gallery
+          <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-950 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            </li>
+
+            <li className="relative group">
+            <Link
+                  to="/about"
+                  className="relative inline-block"
+            >
+                  About
+          <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-950 transition-all duration-300 group-hover:w-full"></span>
+            </Link></li>
+            <li className="relative group">
+              <Link
+                  to="/contact"
+                  className="relative inline-block"
+            >
+                  Contact
+          <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-950 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+              
+            </li>
+            <li className="relative group"><Link to="/student-corner" className="relative inline-block">Student Corner
+            <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-950 transition-all duration-300 group-hover:w-full"></span>
+            </Link></li>
           </ul>
 
-          <Link
-            to="/signin"
-            className="bg-blue-950 text-white px-4 py-2 rounded-lg"
-          >
-            Sign In
-          </Link>
+       <Link
+  to="/signin"
+  className="relative overflow-hidden border-2 border-blue-950 text-blue-950 px-5 py-2 rounded-lg font-medium
+  transition-colors duration-300 group hover:text-white"
+>
+  <span className="relative z-10">Sign In</span>
+
+  <span className="absolute left-0 top-0 h-full w-0 bg-blue-950
+  transition-all duration-300 group-hover:w-full"></span>
+</Link>
+
+
         </div>
 
         {/* MOBILE MENU BUTTON */}
