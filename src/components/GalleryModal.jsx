@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ImagePreview from "./ImagePreview";
+import { X } from "lucide-react";
 
 const GalleryModal = ({ event, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -15,10 +16,23 @@ const GalleryModal = ({ event, onClose }) => {
           {/* Close */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-2xl"
+            className="
+              absolute top-4 right-4
+              w-10 h-10
+              flex items-center justify-center
+              rounded-full
+              text-2xl text-gray-600
+              cursor-pointer
+              transition
+              hover:bg-gray-200
+              hover:text-black
+              hover:scale-110
+              active:scale-95
+               "
           >
-            ✕
+            <X />
           </button>
+
 
           <h2 className="text-2xl font-bold">{event.title}</h2>
           <p className="text-gray-500 mb-6">{event.date}</p>
