@@ -17,6 +17,7 @@ const Gallery = () => {
       ]
     },
     {
+    
       title: "Group Day Event",
       date: "3 Feb 2025",
       cover: "https://plus.unsplash.com/premium_photo-1714397546773-4890ebcba935?w=600",
