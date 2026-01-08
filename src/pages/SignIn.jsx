@@ -22,7 +22,8 @@ const SignIn = () => {
         px-4 py-1.5 rounded-md font-medium
         shadow-md
         hover:bg-blue-700
-        transition"
+        transition cursor-pointer"
+        
       >
        Go To Home
       </button>
@@ -75,7 +76,7 @@ const SignIn = () => {
 
         <button
           className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium
-          hover:scale-[1.03] transition"
+          hover:scale-[1.03] transition cursor-pointer"
         >
           Login as {role}
         </button>
