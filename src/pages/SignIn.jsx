@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Login = () => {
+const SignIn = () => {
   const [show, setShow] = useState(false);
   const [role, setRole] = useState("student"); // student | professor
 
@@ -99,4 +99,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
