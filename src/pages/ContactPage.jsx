@@ -80,7 +80,7 @@ const ContactPage = () => {
         </div>
 
         {/* Google Maps Section */}
-        <div className="w-full h-`[450px]` rounded-xl overflow-hidden shadow-2xl border border-gray-200">
+        <div className="w-full h-[450px] rounded-xl overflow-hidden shadow-2xl border border-gray-200">
           <iframe
               title="LJ College of Computer Applications Map"
               src="https://www.google.com/maps?q=LJ+College+of+Computer+Applications,+Vastrapur,+Ahmedabad&output=embed"

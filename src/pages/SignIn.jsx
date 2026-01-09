@@ -24,7 +24,7 @@ const SignIn = () => {
         className="absolute top-4 left-4 sm:top-5 sm:left-5
         bg-blue-600 text-white text-xs sm:text-sm
         px-3 sm:px-4 py-1.5 rounded-md font-medium
-        shadow-md hover:bg-blue-700 transition"
+        shadow-md hover:bg-blue-700 transition cursor-pointer"
       >
         Go To Home
       </button>
@@ -38,7 +38,7 @@ const SignIn = () => {
         ${show ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"}`}
       >
         {/* TITLE */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-blue-950">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-blue-950 ">
           {role === "student" ? "Student Login" : "Professor Login"}
         </h2>
 
@@ -52,7 +52,7 @@ const SignIn = () => {
 
           <button
             onClick={() => setRole("student")}
-            className={`relative z-10 w-1/2 py-2.5 font-semibold
+            className={`relative z-10 w-1/2 py-2.5 font-semibold cursor-pointer
             ${role === "student" ? "text-white" : "text-gray-700"}`}
           >
             Student
@@ -60,7 +60,7 @@ const SignIn = () => {
 
           <button
             onClick={() => setRole("professor")}
-            className={`relative z-10 w-1/2 py-2.5 font-semibold
+            className={`relative z-10 w-1/2 py-2.5 font-semibold cursor-pointer
             ${role === "professor" ? "text-white" : "text-gray-700"}`}
           >
             Professor
@@ -70,7 +70,7 @@ const SignIn = () => {
         {/* USER ID */}
         <input
           type="text"
-          placeholder={role === "student" ? "Student ID" : "Professor ID"}
+          placeholder={role === "student" ? "Student Enrollment ID" : "Professor Email ID"}
           className="w-full mb-4 sm:mb-5 border rounded-xl
           px-4 py-2.5 sm:py-3 text-sm
           focus:ring-2 focus:ring-blue-500 outline-none"
@@ -90,7 +90,7 @@ const SignIn = () => {
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             className="absolute right-4 top-1/2 -translate-y-1/2
-            text-gray-500 hover:text-blue-700"
+            text-gray-500 hover:text-blue-700 cursor-pointer"
           >
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </button>
@@ -100,7 +100,7 @@ const SignIn = () => {
         <button
           className="w-full bg-blue-950 text-white
           py-2.5 sm:py-3 rounded-xl font-semibold
-          hover:scale-[1.03] transition"
+          hover:scale-[1.03] transition cursor-pointer"
         >
           Login as {role}
         </button>
@@ -109,7 +109,7 @@ const SignIn = () => {
         <div className="flex justify-center sm:justify-end mb-5">
           <button
             type="button"
-            className="text-sm text-blue-900 hover:underline pt-2"
+            className="text-l text-blue-900 hover:underline pt-2 cursor-pointer"
           >
             Forgot Password?
           </button>
