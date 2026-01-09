@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo + Text same line */}
           <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
             <img
-              src="/img/whitelogo2-removebg-preview.png"
+              src="img/whitelogo2-removebg-preview.png"
               alt="Campus Flow"
               className="h-16 w-16 object-contain"
             />
