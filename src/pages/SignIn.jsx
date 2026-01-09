@@ -21,6 +21,14 @@ const SignIn = () => {
         onClick={() => navigate("/")}
         className="absolute top-6 left-6 bg-blue-700 text-white text-sm cursor-pointer
         px-4 py-2 rounded-lg shadow hover:bg-blue-800 transition hover:border-l"
+        onClick={() => navigate("/")} // ✅ redirect
+        className="absolute top-5 left-5
+        bg-blue-600 text-white text-sm
+        px-4 py-1.5 rounded-md font-medium
+        shadow-md
+        hover:bg-blue-700
+        transition cursor-pointer"
+        
       >
          Go To Home
       </button>
@@ -89,6 +97,8 @@ const SignIn = () => {
         <button
           className="w-full bg-blue-700 text-white py-3 rounded-xl font-semibold cursor-pointer
           hover:scale-[1.03] hover:bg-blue-800 transition"
+          className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium
+          hover:scale-[1.03] transition cursor-pointer"
         >
           Login as {role}
         </button>
