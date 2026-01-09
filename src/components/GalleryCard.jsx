@@ -2,7 +2,7 @@ const GalleryCard = ({ event, onClick }) => {
   return (
     <div
       onClick={() => onClick(event)}
-      className="cursor-pointer bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+      className="cursor-pointer bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition top-2"
     >
       <div className="aspect-4/3 overflow-hidden">
         <img
