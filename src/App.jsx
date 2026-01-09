@@ -22,7 +22,7 @@ function App() {
     <div className="flex flex-col min-h-screen">
       {!hideLayout && <Navbar />}
 
-      <main className={`grow ${hideLayout ? 'pt-0': 'bg-gray-50'}`}>
+      
       <main className={`grow ${noPadding ? "pt-0" : "pt-20"}`}>
         <Routes>
           <Route path="/" element={<DashBoard />} />
@@ -33,6 +33,7 @@ function App() {
           <Route path="/student-corner" element={<StudentCorner />} />
         </Routes>
       </main>
+      
 
       {!hideLayout && <Footer />}
     </div>
