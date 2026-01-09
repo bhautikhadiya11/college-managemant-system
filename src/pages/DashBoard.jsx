@@ -46,7 +46,7 @@ const DashBoard = () => {
       <main className="grow pt-0">
 
         {/* 🖼 COLLEGE IMAGE SLIDER */}
-        <div className="w-full h-[625px] overflow-hidden relative">
+        <div className="w-full h-`[625px]` overflow-hidden relative">
           <img
             src={sliderImages[index]}
             alt="College Campus"

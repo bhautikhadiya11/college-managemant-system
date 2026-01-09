@@ -11,18 +11,18 @@ import DashBoard from "./pages/DashBoard";
 function App() {
   const location = useLocation();
 
-  // ❌ Navbar/Footer hide only on signin
+  //  Navbar/Footer hide only on signin
   const hideLayout = location.pathname === "/signin";
 
-  // ❌ Padding remove on dashboard & signin
+  //  Padding remove on dashboard & signin
   const noPadding =
-    location.pathname === "/" || location.pathname === "/signin";
+    location.pathname === "/" || location.pathname === "/signin" || location.pathname === "/ContactPage.jsx";
 
   return (
     <div className="flex flex-col min-h-screen">
       {!hideLayout && <Navbar />}
 
-      
+      <main className={`grow ${hideLayout ? 'pt-0': 'bg-gray-50'}`}>
       <main className={`grow ${noPadding ? "pt-0" : "pt-20"}`}>
         <Routes>
           <Route path="/" element={<DashBoard />} />
@@ -33,7 +33,7 @@ function App() {
           <Route path="/student-corner" element={<StudentCorner />} />
         </Routes>
       </main>
-      
+      </main>
 
       {!hideLayout && <Footer />}
     </div>

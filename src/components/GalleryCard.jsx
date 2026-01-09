@@ -1,6 +1,8 @@
 const GalleryCard = ({ event, onClick }) => {
   return (
+      
     <div
+    
       onClick={() => onClick(event)}
       className="cursor-pointer bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition top-2"
     >
