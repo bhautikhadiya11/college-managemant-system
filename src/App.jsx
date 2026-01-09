@@ -3,9 +3,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
 import SignIn from "./pages/SignIn";
 import StudentCorner from "./pages/StudentCorner";
+import ContactPage from "./pages/ContactPage";
 import DashBoard from "./pages/DashBoard";
 
 function App() {
@@ -22,12 +22,13 @@ function App() {
     <div className="flex flex-col min-h-screen">
       {!hideLayout && <Navbar />}
 
+      <main className={`grow ${hideLayout ? 'pt-0': 'bg-gray-50'}`}>
       <main className={`grow ${noPadding ? "pt-0" : "pt-20"}`}>
         <Routes>
           <Route path="/" element={<DashBoard />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/student-corner" element={<StudentCorner />} />
         </Routes>
