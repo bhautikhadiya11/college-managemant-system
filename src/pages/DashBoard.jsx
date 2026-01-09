@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 const sliderImages = [
   // Main Campus
   "https://images.unsplash.com/photo-1592930954854-7d00c87d0cf4",
-  "https://images.unsplash.com/photo-1611074182055-4ac85bad8bb6",
+  "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3",
   "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
-  "https://images.unsplash.com/photo-1562774053-701939374585",
+//   "https://images.unsplash.com/photo-1690752795233-3813df6e2760",
+// "https://images.unsplash.com/photo-1735736158949-a22521878828",
+"https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d",
   
 ];
 
