@@ -106,14 +106,22 @@ const SignIn = () => {
         </button>
 
         {/* FORGOT PASSWORD */}
-        <div className="flex justify-center sm:justify-end mb-5">
+       <div className="flex justify-center sm:justify-end mb-5">
           <button
             type="button"
-            className="text-l text-blue-900 hover:underline pt-2 cursor-pointer"
+            onClick={() => navigate("/forgot-password")}
+            className="
+              text-l text-blue-900 pt-2 cursor-pointer
+              hover:underline
+              transition duration-200
+            "
           >
             Forgot Password?
           </button>
         </div>
+
+
+        
 
         {/* SOCIAL MEDIA */}
         <div className="mt-2">
