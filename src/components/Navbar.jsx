@@ -6,14 +6,20 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 left-0 w-full bg-gray-100 shadow-md z-50">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
-
+      <div
+        className="
+          w-full mx-auto
+          px-4 sm:px-6 md:px-8
+          flex items-center justify-between
+          h-20 sm:h-24 md:h-25
+        "
+      >
         {/* LEFT: Logo + Title */}
         <Link to="/" className="flex items-center gap-2 hover:opacity-90">
           <img
             src="/img/bgremove.png"
             alt="Campus Flow Logo"
-            className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+            className="h-12 sm:h-14 md:h-25 w-auto object-contain"
           />
 
           <div className="flex gap-1 sm:gap-2">
@@ -26,11 +32,11 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* DESKTOP MENU */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* DESKTOP MENU (ONLY FOR LARGE SCREENS) */}
+        <div className="hidden lg:flex items-center gap-8">
           <ul className="flex gap-6 lg:gap-8 text-blue-950 font-medium text-lg lg:text-xl">
             {["gallery", "about", "contact", "student-corner"].map((path) => (
-              <li key={path} className="relative group">
+              <li key={path} className="relative group whitespace-nowrap">
                 <Link to={`/${path}`} className="relative inline-block capitalize">
                   {path.replace("-", " ")}
                   <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-blue-950 transition-all duration-300 group-hover:w-full"></span>
@@ -44,7 +50,7 @@ const Navbar = () => {
             to="/signin"
             className="relative overflow-hidden border-2 border-blue-950 text-blue-950
             px-5 py-2 rounded-lg font-medium
-            transition-colors duration-300 group hover:text-white"
+            transition-colors duration-300 group hover:text-white whitespace-nowrap"
           >
             <span className="relative z-10">Sign In</span>
             <span
@@ -54,18 +60,18 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* MOBILE / TABLET MENU BUTTON */}
         <button
-          className="md:hidden text-3xl text-blue-950"
+          className="lg:hidden text-3xl text-blue-950"
           onClick={() => setOpen(!open)}
         >
           ☰
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE / TABLET MENU */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300
+        className={`lg:hidden overflow-hidden transition-all duration-300
         ${open ? "max-h-96" : "max-h-0"}`}
       >
         <div className="bg-gray-100 px-6 py-4">
