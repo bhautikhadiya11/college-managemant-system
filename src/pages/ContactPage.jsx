@@ -6,7 +6,7 @@ const ContactPage = () => {
     {
       title: "Campus Address",
       icon: <MapPin className="text-white w-6 h-6" />,
-      content: "SILVEROAK CAMPUS AND RESEARCH FOUNDATION, 352/353, 370/LJ Campus, LJ University Rd, off Sarkhej - Gandhinagar Highway, Makarba, Ahmedabad, Sarkhej-Okaf, Gujarat 382210, GOTA GAM, AHMEDABAD, Gujarat, India, 382481.",
+      content: "LJ COLLEGE OF COMPUTER APPLICATIONS,NEAR IIMA,IIM ROAD, VASTRAPUR, AHMEDABAD, Gujarat, India, 380015.",
       color: "text-red-800"
     },
     {
@@ -20,6 +20,7 @@ const ContactPage = () => {
       title: "Phone Numbers",
       icon: <Phone className="text-white w-6 h-6" />,
       content: ["079-35201300", "079-66046300", "+91 9099063464"],
+      isContact:true,
       color: "text-red-800"
     },
     {
@@ -35,8 +36,12 @@ const ContactPage = () => {
   ];
 
   return (
+    
+    <div className='text-center bg-gray-50 pt-20 pb-20'> <h1 className='font-bold text-blue-950 text-4xl'>Contact Us</h1>
     <div className="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
+      
       <div className="max-w-7xl mx-auto">
+        
         
         {/* Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -58,8 +63,12 @@ const ContactPage = () => {
                         <p className="font-semibold text-gray-800">{line.name}</p>
                         <p className="text-blue-600">{line.phone}</p>
                       </div>
-                    ) : (
-                      <p key={i} className={item.isEmail ? "text-blue-600" : ""}>{line}</p>
+                    ) :
+                     
+                     (
+                      <p key={i} className={item.isEmail ? "text-blue-600" : ""}>{line}</p>,
+                      <p key={i} className={item.isContact ? 'text-blue-600' : ""}>{line}</p>
+
                     )
                   ))
                 ) : (
@@ -72,18 +81,18 @@ const ContactPage = () => {
 
         {/* Google Maps Section */}
         <div className="w-full h-[450px] rounded-xl overflow-hidden shadow-2xl border border-gray-200">
-          <iframe 
-            title="Campus Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.3015525546!2d72.5298113758872!3d23.086082213812546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e839e24f74d4d%3A0xc392e22f25a95627!2sSilver%20Oak%20University!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <iframe
+              title="LJ College of Computer Applications Map"
+              src="https://www.google.com/maps?q=LJ+College+of+Computer+Applications,+Vastrapur,+Ahmedabad&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
         </div>
       </div>
+    </div>
     </div>
   );
 };

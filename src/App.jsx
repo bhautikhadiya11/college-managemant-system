@@ -3,9 +3,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
 import SignIn from "./pages/SignIn";
 import StudentCorner from "./pages/StudentCorner";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const location = useLocation(); // 2. Initialize location
@@ -18,11 +18,11 @@ function App() {
       {/* 4. Only show Navbar if hideLayout is false */}
       {!hideLayout && <Navbar />}
 
-      <main className={`grow ${hideLayout ? 'pt-0' : 'pt-20'}`}>
+      <main className={`grow ${hideLayout ? 'pt-0': 'bg-gray-50'}`}>
         <Routes>
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/student-corner" element={<StudentCorner />} />
         </Routes>
