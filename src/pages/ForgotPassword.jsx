@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [show, setShow] = useState(false); // 🔥 animation trigger
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setShow(true); // animate on mount
+  }, []);
 
   const isValidEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -21,22 +26,28 @@ const ForgotPassword = () => {
       return;
     }
 
-    // 🔐 OTP backend yaha lagega (future)
     navigate("/verify-otp", { state: { email } });
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-blue-100 px-4">
 
+      {/* BACK BUTTON */}
       <button
         onClick={() => navigate("/signin")}
-        className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-md"
+        className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer"
       >
-        ← Back  
+        ← Back
       </button>
 
-      <div className="bg-white w-full max-w-md p-8 rounded-2xl shadow-xl">
-
+      {/* 🔥 CARD WITH FADE + SCALE */}
+      <div
+        className={`
+          bg-white w-full max-w-md p-8 rounded-2xl shadow-xl
+          transform transition-all duration-500 ease-out
+          ${show ? "opacity-100 scale-100" : "opacity-0 scale-95"}
+        `}
+      >
         <h2 className="text-2xl font-bold text-center mb-2">
           Forgot Password
         </h2>
