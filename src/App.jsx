@@ -15,20 +15,20 @@ import VerifyOTP from "./pages/VerifyOTP";
 function App() {
   const location = useLocation();
 
-  const hideLayout = 
-  location.pathname === "/signin" || 
-  location.pathname === "/forgot-password" || 
-  location.pathname === "/reset-password" ||
-  location.pathname === "/verify-otp";
+  const hideLayout =
+    location.pathname === "/signin" ||
+    location.pathname === "/forgot-password" ||
+    location.pathname === "/reset-password" ||
+    location.pathname === "/verify-otp";
 
+  // ✅ FIXED: ONLY URL PATHS
   const noPadding =
     location.pathname === "/" ||
     location.pathname === "/signin" ||
-    location.pathname === "/ContactPage.jsx" ||
-    location.pathname === "/ForgotPassword.jsx" ||
-    location.pathname === "/ResetPassword.jsx" ||
-    location.pathname === "/VerifyOTP.jsx";
-    
+    location.pathname === "/about" ||
+    location.pathname === "/forgot-password" ||
+    location.pathname === "/reset-password" ||
+    location.pathname === "/verify-otp";
 
   return (
     <div className="flex flex-col min-h-screen">
