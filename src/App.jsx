@@ -11,6 +11,11 @@ import DashBoard from "./pages/DashBoard";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import VerifyOTP from "./pages/VerifyOTP";
+import BBA from "./components/Departments/management/bba";
+import MBA from "./components/Departments/management/mba";
+
+// ✅ Departments
+
 
 function App() {
   const location = useLocation();
@@ -21,7 +26,6 @@ function App() {
     location.pathname === "/reset-password" ||
     location.pathname === "/verify-otp";
 
-  // ✅ FIXED: ONLY URL PATHS
   const noPadding =
     location.pathname === "/" ||
     location.pathname === "/signin" ||
@@ -36,6 +40,7 @@ function App() {
 
       <main className={`grow ${noPadding ? "pt-0" : "pt-20"} bg-gray-50`}>
         <Routes>
+          {/* Main Pages */}
           <Route path="/" element={<DashBoard />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
@@ -43,10 +48,14 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/student-corner" element={<StudentCorner />} />
 
-          {/* 🔐 Forgot Password Flow */}
+          {/* 🔐 Auth Flow */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
+
+          {/* 🎓 Departments */}
+          <Route path="/Departments/management/bba" element={<BBA/>} />
+          <Route path="/Departments/management/mba" element={<MBA/>} />
         </Routes>
       </main>
 
