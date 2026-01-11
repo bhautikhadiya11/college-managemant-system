@@ -7,7 +7,7 @@ const Gallery = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const location = useLocation();
 
-  /* 🔝 SCROLL PRESERVE FIX (ONLY CHANGE IS HERE) */
+  /* SCROLL PRESERVE FIX (ONLY CHANGE IS HERE) */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

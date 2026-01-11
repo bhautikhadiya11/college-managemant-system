@@ -25,7 +25,7 @@ const About = () => {
     return () => clearInterval(counter);
   }, []);
 
-  /* 🎬 ENTRY ANIMATION */
+  /*  ENTRY ANIMATION */
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
     if (fromLearnMore) {
