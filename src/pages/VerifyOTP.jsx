@@ -45,7 +45,7 @@ const VerifyOTP = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-900 text-white py-3 rounded-xl hover:bg-blue-800 transition"
+            className="w-full bg-blue-900 text-white py-3 rounded-xl hover:bg-blue-800 transition cursor-pointer"
           >
             Verify OTP
           </button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-/* 🎓 College Campus Slider Images */
+/* College Campus Slider Images */
 const sliderImages = [
   "https://images.unsplash.com/photo-1592930954854-7d00c87d0cf4",
   "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3",
@@ -19,7 +19,11 @@ const DashBoard = () => {
   const [faculty, setFaculty] = useState(0);
   const [departments, setDepartments] = useState(0);
 
+<<<<<<< Updated upstream
   /* 🔁 Image auto change */
+=======
+  /* Image auto change every 5 sec */
+>>>>>>> Stashed changes
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % sliderImages.length);
@@ -27,7 +31,7 @@ const DashBoard = () => {
     return () => clearInterval(timer);
   }, []);
 
-  /* 🔢 Count animation */
+  /* Count animation */
   useEffect(() => {
     const counter = setInterval(() => {
       setStudents((p) => (p < 3200 ? p + 40 : p));
@@ -51,7 +55,7 @@ const DashBoard = () => {
           />
         </div>
 
-        {/* 📊 COLLEGE INFO SECTION */}
+        {/* COLLEGE INFO SECTION */}
         <section className="px-10 py-14">
           <h1 className="text-3xl font-bold text-blue-950 text-center mb-10">
             Our College at a Glance

@@ -7,13 +7,13 @@ const About = () => {
 
   const [animate, setAnimate] = useState(false);
 
-  /* 🔢 IMPACT COUNTING STATES */
+  /*  IMPACT COUNTING STATES */
   const [students, setStudents] = useState(0);
   const [faculty, setFaculty] = useState(0);
   const [modules, setModules] = useState(0);
   const [automation, setAutomation] = useState(0);
 
-  /* 🔁 COUNTING EFFECT */
+  /*  COUNTING EFFECT */
   useEffect(() => {
     const counter = setInterval(() => {
       setStudents((p) => (p < 3200 ? p + 40 : p));

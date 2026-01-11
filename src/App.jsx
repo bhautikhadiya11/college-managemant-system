@@ -13,6 +13,7 @@ import ResetPassword from "./pages/ResetPassword";
 import VerifyOTP from "./pages/VerifyOTP";
 import BBA from "./components/Departments/management/bba";
 import MBA from "./components/Departments/management/mba";
+import Placement from "./pages/Placement";
 
 // ✅ Departments
 
@@ -32,6 +33,7 @@ function App() {
     location.pathname === "/about" ||
     location.pathname === "/forgot-password" ||
     location.pathname === "/reset-password" ||
+    location.pathname === "/student-corner/placement" ||
     location.pathname === "/verify-otp";
 
   return (
@@ -48,14 +50,18 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/student-corner" element={<StudentCorner />} />
 
-          {/* 🔐 Auth Flow */}
+          <Route path="/student-corner/placement" element={<Placement />} />  
+
+          {/* Auth Flow */}
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
 
-          {/* 🎓 Departments */}
+          {/* Departments */}
           <Route path="/Departments/management/bba" element={<BBA/>} />
           <Route path="/Departments/management/mba" element={<MBA/>} />
+
+
         </Routes>
       </main>
 

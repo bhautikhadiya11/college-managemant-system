@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -33,14 +34,17 @@ const ForgotPassword = () => {
     <div className="fixed inset-0 flex items-center justify-center bg-blue-100 px-4">
 
       {/* BACK BUTTON */}
-      <button
+       <button
         onClick={() => navigate("/signin")}
-        className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer"
+        className="absolute top-4 left-4 sm:top-5 sm:left-5
+        bg-blue-600 text-white text-xs sm:text-sm
+        px-3 sm:px-4 py-1.5 rounded-md font-medium
+        shadow-md hover:bg-blue-700 transition cursor-pointer justify-center flex gap-1 items-center"
       >
-        ← Back
+       <ArrowLeft size={18}/>Back
       </button>
 
-      {/* 🔥 CARD WITH FADE + SCALE */}
+      {/* CARD WITH FADE + SCALE */}
       <div
         className={`
           bg-white w-full max-w-md p-8 rounded-2xl shadow-xl
@@ -67,7 +71,7 @@ const ForgotPassword = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-900 text-white py-3 rounded-xl hover:bg-blue-800 transition"
+            className="w-full bg-blue-900 text-white py-3 rounded-xl hover:bg-blue-800 transition cursor-pointer font-medium"
           >
             Send OTP
           </button>
