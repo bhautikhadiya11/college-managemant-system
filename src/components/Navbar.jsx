@@ -15,7 +15,7 @@ const Navbar = () => {
           <img
             src="/img/bgremove.png"
             alt="Campus Flow Logo"
-            className="h-12 sm:h-14 w-auto object-contain"
+            className="h-12 sm:h-25 w-auto object-contain"
           />
           <div className="flex gap-1 sm:gap-2">
             <h1 className="text-2xl sm:text-3xl font-bold text-blue-950">CAMPUS</h1>
@@ -37,7 +37,7 @@ const Navbar = () => {
               </li>
             ))}
 
-            {/* ✅ DEPARTMENTS – SAME STYLE AS STUDENT CORNER */}
+            {/* DEPARTMENTS – SAME STYLE AS STUDENT CORNER */}
             <li className="relative group whitespace-nowrap">
               <span className="relative inline-block cursor-pointer">
                 Departments

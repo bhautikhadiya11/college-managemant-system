@@ -73,7 +73,7 @@ const ImagePreview = ({
           <ChevronRight />
       </button>
 
-      {/* 🔍 DISPLAY ZOOM TOGGLE */}
+      {/* DISPLAY ZOOM TOGGLE */}
       <button
         onClick={() => setZoomView(!zoomView)}
         className="absolute bottom-6 bg-white/10 text-white px-4 py-2
