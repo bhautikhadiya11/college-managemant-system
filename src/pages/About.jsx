@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const About = () => {
+  const location = useLocation();
+  const fromLearnMore = location.state?.fromLearnMore;
+
+  const [animate, setAnimate] = useState(false);
 
   /* 🔢 IMPACT COUNTING STATES */
   const [students, setStudents] = useState(0);
@@ -20,51 +25,88 @@ const About = () => {
     return () => clearInterval(counter);
   }, []);
 
+  /* 🎬 ENTRY ANIMATION */
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    if (fromLearnMore) {
+      setTimeout(() => setAnimate(true), 50);
+    } else {
+      setAnimate(true);
+    }
+  }, [fromLearnMore]);
+
   return (
-    <div className="w-full overflow-x-hidden">
+    <div
+      className={`w-full overflow-x-hidden transition-all duration-700 ease-out
+      ${fromLearnMore && !animate ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"}`}
+    >
 
-      {/* HERO */}
-      <section className="relative h-[70vh] sm:h-[80vh] lg:h-[85vh]">
+      {/* ABOUT INTRO SECTION */}
+{/* ABOUT US INTRO SECTION */}
+<section className="bg-blue-950 text-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+
+    {/* CENTER HEADING */}
+    <h1 className="text-xl sm:text-4xl font-bold text-center mb-12">
+      About Us
+    </h1>
+
+    {/* TOP CONTENT */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-10">
+
+      {/* LEFT TEXT */}
+      <div className="leading-relaxed text-sm sm:text-base space-y-6 text-gray-100">
+        <p>
+          Campus Flow is committed to offering an ideal and innovative digital
+          learning environment while upholding the core values of academic
+          excellence. It is designed to digitize academic and administrative
+          operations for modern educational institutions.
+        </p>
+
+        <p>
+          The platform connects students, faculty, and administrators through a
+          centralized system that ensures seamless access to academic records,
+          attendance management, communication tools, and institutional
+          resources.
+        </p>
+
+        <p>
+          Campus Flow emphasizes transparency, efficiency, and scalability,
+          enabling institutions to manage campus operations effectively in a
+          technology-driven academic landscape.
+        </p>
+      </div>
+
+      {/* RIGHT IMAGE (NEW WORKING IMAGE) */}
+      <div>
         <img
-          src="/img/campus.jpg"
-          alt="Campus"
-          className="absolute inset-0 w-full h-full object-cover"
+          src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg"
+          alt="Students Collaboration"
+          className="rounded-xl shadow-2xl w-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4 sm:px-6">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Campus Flow
-          </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-3xl">
-            A Complete College Management System Designed to Digitize
-            Academic & Administrative Operations
-          </p>
-        </div>
-      </section>
+    </div>
 
-      {/* WHAT IS CAMPUS FLOW */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 grid gap-10 md:grid-cols-2 items-center">
-        <div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-blue-950 mb-4 sm:mb-6">
-            What is Campus Flow?
-          </h2>
-          <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-            Campus Flow is a web-based College Management System that
-            centralizes all academic and administrative activities into a
-            single digital platform.
-          </p>
-          <p className="mt-4 text-gray-700 leading-relaxed text-sm sm:text-base">
-            The system is designed to support students, faculty, and
-            administrators by enabling seamless data flow.
-          </p>
-        </div>
-        <img
-          src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80"
-          alt="System overview"
-          className="rounded-xl shadow-lg w-full"
-        />
-      </section>
+    {/* BOTTOM CONTINUED TEXT */}
+    <div className="leading-relaxed text-sm sm:text-base space-y-6 text-gray-100">
+      <p>
+        By integrating technology with academic workflows, Campus Flow reduces
+        manual processes, improves data accuracy, and strengthens collaboration
+        across departments. The system supports informed decision-making and
+        streamlined campus operations.
+      </p>
+
+      <p>
+        Campus Flow creates a connected campus ecosystem that nurtures
+        innovation, accountability, and student success while empowering
+        faculty and administrators with efficient digital tools.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
       {/* WHY NEEDED */}
       <section className="bg-gray-100 py-16 sm:py-20">
@@ -115,6 +157,9 @@ const About = () => {
         </div>
       </section>
 
+      
+
+
       {/* HOW IT WORKS */}
       <section className="bg-blue-950 text-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-10 md:grid-cols-2 items-center">
@@ -137,39 +182,60 @@ const About = () => {
         </div>
       </section>
 
-      {/* SYSTEM IMPACT */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <h2 className="text-2xl sm:text-3xl font-bold text-blue-950 mb-10 text-center">
-          Impact of Campus Flow
+      {/* MISSION & VISION */}
+<section className="bg-gray-100 py-16 sm:py-20">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-20">
+
+    {/* MISSION */}
+    <div className="grid gap-12 md:grid-cols-2 items-center">
+      <div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-blue-950 mb-6">
+          Mission
         </h2>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center">
-          <div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-950">
-              {students}+
-            </h3>
-            <p className="text-gray-600 text-sm sm:text-base">Students Managed</p>
-          </div>
-          <div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-600">
-              {faculty}+
-            </h3>
-            <p className="text-gray-600 text-sm sm:text-base">Faculty Records</p>
-          </div>
-          <div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-600">
-              {modules}+
-            </h3>
-            <p className="text-gray-600 text-sm sm:text-base">Courses</p>
-          </div>
-          <div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-orange-600">
-              {automation}+
-            </h3>
-            <p className="text-gray-600 text-sm sm:text-base">Departments</p>
-          </div>
-        </div>
-      </section>
+        <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
+          <li>• To digitize academic and administrative operations efficiently</li>
+          <li>• To promote transparency through centralized campus systems</li>
+          <li>• To reduce manual workload using smart automation</li>
+          <li>• To empower students and faculty with real-time digital access</li>
+          <li>• To enhance operational accuracy and institutional efficiency</li>
+        </ul>
+      </div>
+
+      <img
+        src="https://images.pexels.com/photos/7666429/pexels-photo-7666429.jpeg"
+        alt="Mission Campus Flow"
+        className="rounded-xl shadow-lg w-full object-cover"
+      />
+    </div>
+
+    {/* VISION */}
+    <div className="grid gap-12 md:grid-cols-2 items-center">
+      <img
+        src="https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg"
+        alt="Vision Campus Flow"
+        className="rounded-xl shadow-lg w-full object-cover"
+      />
+
+      <div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-blue-950 mb-6">
+          Vision
+        </h2>
+
+        <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
+          <li>• To build a future-ready digital campus ecosystem</li>
+          <li>• To support innovation-driven education environments</li>
+          <li>• To enable data-driven academic decision-making</li>
+          <li>• To create a scalable and secure campus platform</li>
+          <li>• To transform institutions through technology-led excellence</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      
 
     </div>
   );
