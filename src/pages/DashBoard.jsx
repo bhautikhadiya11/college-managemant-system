@@ -19,11 +19,7 @@ const DashBoard = () => {
   const [faculty, setFaculty] = useState(0);
   const [departments, setDepartments] = useState(0);
 
-//Updated upstream
-  /* 🔁 Image auto change */
 
-  /* Image auto change every 5 sec */
-//Stashed changes
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % sliderImages.length);
