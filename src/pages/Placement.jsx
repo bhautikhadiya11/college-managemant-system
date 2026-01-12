@@ -46,7 +46,7 @@ const PlacementPage = () => {
     <div className="bg-white text-gray-800">
 
       {/* HERO */}
-      <section className="bg-gradient-to-r text-blue-950 py-20 text-center">
+      <section className="bg-gradient-to-r text-blue-950 pt-20 text-center">
         <h1 className="text-4xl font-bold mb-4">Placements & Careers</h1>
         <p className="max-w-2xl mx-auto text-lg opacity-90">
           Transforming students into industry-ready professionals.

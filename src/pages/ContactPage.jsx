@@ -37,7 +37,7 @@ const ContactPage = () => {
 
   return (
     
-    <div className='text-center bg-gray-50 '> <h1 className='font-bold text-blue-950 text-4xl '>Contact Us</h1>
+    <div className='text-center bg-gray-50 pt-20'> <h1 className='font-bold text-blue-950 text-4xl '>Contact Us</h1>
     <div className="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8 font-sans">
       
       <div className="max-w-7xl mx-auto">
