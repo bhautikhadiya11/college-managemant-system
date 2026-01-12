@@ -14,6 +14,8 @@ import VerifyOTP from "./pages/VerifyOTP";
 import BBA from "./components/Departments/management/bba";
 import MBA from "./components/Departments/management/mba";
 import Placement from "./pages/Placement";
+import Sports from "./pages/Sports";
+
 
 // ✅ Departments
 
@@ -34,6 +36,7 @@ function App() {
     location.pathname === "/forgot-password" ||
     location.pathname === "/reset-password" ||
     location.pathname === "/student-corner/placement" ||
+    location.pathname === "/student-corner/sports" ||
     location.pathname === "/verify-otp";
 
   return (
@@ -50,6 +53,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/student-corner" element={<StudentCorner />} />
 
+          <Route path="/student-corner/sports" element={<Sports />} />
           <Route path="/student-corner/placement" element={<Placement />} />  
 
           {/* Auth Flow */}
