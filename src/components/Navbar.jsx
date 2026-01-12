@@ -76,8 +76,7 @@ const Navbar = () => {
                 <ul className="py-2 text-base text-blue-950">
                   <li><Link to="/student-corner/sports" className="block px-4 py-2 hover:bg-gray-100">Sports</Link></li>
                   <li><Link to="/student-corner/placement" className="block px-4 py-2 hover:bg-gray-100">Placement</Link></li>
-                  <li><Link to="/student-corner/courses" className="block px-4 py-2 hover:bg-gray-100">Courses</Link></li>
-                  <li><Link to="/student-corner/faculty" className="block px-4 py-2 hover:bg-gray-100">Faculty</Link></li>
+                  
                 </ul>
               </div>
             </li>
