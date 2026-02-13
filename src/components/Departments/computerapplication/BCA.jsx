@@ -6,7 +6,7 @@ import {
   Trophy,
 } from "lucide-react";
 
-const MCOM = () => {
+const BCA = () => {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
@@ -19,8 +19,8 @@ const MCOM = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[620px] md:h-[720px]">
         <img
-          src="https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg"
-          alt="MCom Background"
+          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+          alt="BCA Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/45"></div>
@@ -28,10 +28,10 @@ const MCOM = () => {
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Master of Commerce (M.Com)
+              Bachelor of Computer Applications (BCA)
             </h1>
             <p className="text-gray-200 text-lg">
-              Deepening expertise in commerce, finance, and business research.
+              Building skilled professionals for the digital world.
             </p>
           </div>
         </div>
@@ -48,44 +48,43 @@ const MCOM = () => {
         </div>
       </div>
 
-      {/* ================= ABOUT MCOM ================= */}
+      {/* ================= ABOUT BCA ================= */}
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/4386379/pexels-photo-4386379.jpeg"
-            alt="About MCom"
+            src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg"
+            alt="About BCA"
             className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="md:w-1/2 w-full bg-blue-950 text-white px-10 py-16">
-          <h2 className="text-3xl font-bold mb-6">About M.Com</h2>
+        <div className="md:w-1/2 w-full bg-blue-900 text-white px-10 py-16">
+          <h2 className="text-3xl font-bold mb-6">About BCA</h2>
 
           <p className="text-gray-200 leading-relaxed mb-5">
-            The Master of Commerce (M.Com) programme is designed for graduates
-            seeking advanced knowledge in commerce, finance, accounting,
-            taxation, and economic analysis. The programme strengthens
-            conceptual clarity and analytical capabilities required for
-            professional and academic growth.
+            The Bachelor of Computer Applications (BCA) programme is designed
+            to provide students with strong foundations in computer science,
+            software development, and information technology. The programme
+            prepares students to meet the growing demands of the IT industry.
           </p>
 
           <p className="text-gray-200 leading-relaxed mb-5">
-            The curriculum focuses on research orientation, critical thinking,
-            and advanced financial practices. Students engage in seminars,
-            case-based discussions, data analysis, and project work to gain
-            in-depth subject expertise.
+            The curriculum covers programming languages, data structures,
+            databases, operating systems, networking, and web technologies,
+            combined with hands-on laboratory work and real-world projects.
           </p>
 
           <p className="text-gray-200 leading-relaxed mb-5">
-            Emphasis is also placed on ethical business practices, regulatory
-            frameworks, and contemporary developments in global commerce and
-            financial markets.
+            Emphasis is placed on problem-solving, logical thinking,
+            application development, and modern computing tools to ensure
+            industry relevance and technical competence.
           </p>
 
           <p className="text-gray-200 leading-relaxed">
-            Graduates are well-prepared for careers in academics, research,
-            banking, finance, taxation, corporate management, or for pursuing
-            doctoral studies and professional certifications.
+            Graduates of the BCA programme are well-equipped to pursue careers
+            in software development, IT services, data analytics, web
+            technologies, or higher education such as MCA and professional
+            certifications.
           </p>
         </div>
       </div>
@@ -100,10 +99,10 @@ const MCOM = () => {
         </h2>
 
         <ul className="grid md:grid-cols-2 gap-6 text-gray-900">
-          <li>✔ Duration: 2 Years (4 Semesters)</li>
-          <li>✔ Full-Time Postgraduate Programme</li>
-          <li>✔ Research & Theory-Oriented Curriculum</li>
-          <li>✔ Projects, Seminars & Dissertation Work</li>
+          <li>✔ Duration: 3 Years (6 Semesters)</li>
+          <li>✔ Full-Time Undergraduate Programme</li>
+          <li>✔ Industry-Oriented IT Curriculum</li>
+          <li>✔ Practical Labs, Projects & Internships</li>
         </ul>
       </section>
 
@@ -119,12 +118,12 @@ const MCOM = () => {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              "Advanced Accounting",
-              "Corporate Finance",
-              "Tax Planning & Compliance",
-              "Banking & Insurance",
-              "Business Economics",
-              "Financial Analytics",
+              "Software Development",
+              "Web & Mobile Applications",
+              "Data Science & Analytics",
+              "Cyber Security",
+              "Cloud Computing",
+              "Artificial Intelligence",
             ].map((spec, i) => (
               <div key={i} className="bg-white p-5 rounded-lg shadow">
                 <h3 className="font-semibold">{spec}</h3>
@@ -143,9 +142,8 @@ const MCOM = () => {
           Eligibility Criteria
         </h2>
         <p className="text-gray-700 max-w-3xl">
-          Bachelor’s degree in Commerce or a related discipline from a
-          recognized university with eligibility criteria as prescribed
-          by the institution.
+          Passed 10+2 examination from a recognized board with Mathematics
+          or Computer-related subjects as per university norms.
         </p>
       </section>
 
@@ -162,19 +160,19 @@ const MCOM = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Finance & Investment Club",
-                img: "https://images.pexels.com/photos/4386369/pexels-photo-4386369.jpeg",
-                desc: "Focuses on financial markets, investment analysis, portfolio management, and corporate finance discussions.",
+                title: "Coding & Development Club",
+                img: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
+                desc: "Enhances programming skills through coding challenges, hackathons, and project-based learning.",
               },
               {
-                title: "Research & Academic Forum",
-                img: "https://images.pexels.com/photos/4386345/pexels-photo-4386345.jpeg",
-                desc: "Encourages academic research, paper presentations, seminars, and scholarly discussions.",
+                title: "Cyber & Tech Club",
+                img: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
+                desc: "Focuses on cyber security awareness, ethical hacking sessions, and emerging technology discussions.",
               },
               {
-                title: "Cultural & Wellness Club",
-                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg",
-                desc: "Promotes balance through cultural programs, sports activities, and wellness initiatives.",
+                title: "Innovation & Robotics Club",
+                img: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg",
+                desc: "Encourages creativity, innovation, robotics projects, and tech-based problem solving.",
               },
             ].map((club, i) => (
               <div key={i} className="bg-white rounded-xl shadow">
@@ -207,19 +205,19 @@ const MCOM = () => {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {[
             {
-              title: "National Commerce Conferences",
-              img: "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
-              desc: "Students presented research papers and participated in national-level commerce and finance conferences.",
+              title: "National Coding Competitions",
+              img: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg",
+              desc: "BCA students participated and secured top ranks in inter-college coding and hackathon events.",
             },
             {
-              title: "Professional Certification Workshops",
-              img: "https://images.pexels.com/photos/4386372/pexels-photo-4386372.jpeg",
-              desc: "Workshops conducted on CA, CS, CMA, and financial certification pathways.",
+              title: "Industry Tech Workshops",
+              img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+              desc: "Hands-on workshops conducted on web development, cloud platforms, and modern technologies.",
             },
             {
-              title: "Industry Interaction Programs",
+              title: "Startup & Innovation Events",
               img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
-              desc: "Interactive sessions with industry experts, bankers, and finance professionals.",
+              desc: "Students showcased innovative ideas and software solutions in startup and innovation programs.",
             },
           ].map((item, i) => (
             <div key={i} className="bg-white rounded-xl shadow">
@@ -243,7 +241,7 @@ const MCOM = () => {
   );
 };
 
-export default MCOM;
+export default BCA;
 
 /* ================= NAV CARD ================= */
 

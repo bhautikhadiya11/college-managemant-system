@@ -74,10 +74,9 @@ const Navbar = () => {
 
               <div className="absolute left-0 top-full mt-3 w-48 bg-white shadow-lg rounded-lg opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
                 <ul className="py-2 text-base text-blue-950">
-                  <li><Link to="/student-corner/sports" className="block px-4 py-2 hover:bg-gray-100">Sports</Link></li>
-                  <li><Link to="/student-corner/placement" className="block px-4 py-2 hover:bg-gray-100">Placement</Link></li>
-                  <li><Link to="/student-corner/courses" className="block px-4 py-2 hover:bg-gray-100">Courses</Link></li>
-                  <li><Link to="/student-corner/faculty" className="block px-4 py-2 hover:bg-gray-100">Faculty</Link></li>
+                  <li><Link to="/Student-corner/sports" className="block px-4 py-2 hover:bg-gray-100">Sports</Link></li>
+                  <li><Link to="/Student-corner/placement" className="block px-4 py-2 hover:bg-gray-100">Placement</Link></li>
+                  
                 </ul>
               </div>
             </li>
