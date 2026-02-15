@@ -1,3 +1,4 @@
+import ScrollToTop from "./components/ScrollToTop.js";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -5,32 +6,40 @@ import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import About from "./pages/About";
 import SignIn from "./pages/SignIn";
-import StudentCorner from "./pages/StudentCorner";
+// import StudentCorner from "./pages/StudentCorner";
 import ContactPage from "./pages/ContactPage";
 import DashBoard from "./pages/DashBoard";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import VerifyOTP from "./pages/VerifyOTP";
+
 import BBA from "./components/Departments/management/bba";
 import MBA from "./components/Departments/management/mba";
-import Placement from "./pages/Placement";
-import Sports from "./pages/Sports";
 import BCOM from "./components/Departments/commerce/B.com";
 import MCOM from "./components/Departments/commerce/M.com";
 import BCA from "./components/Departments/computerapplication/BCA";
 import MCA from "./components/Departments/computerapplication/MCA";
+import Placement from "./pages/Placement";
+import Sports from "./pages/Sports";
 
-// ✅ Departments
-
-
+import StudentLayout from "./pages/student/StudentLayout.jsx";
+import StudentHome from "./pages/student/StudentHome.jsx";
+import Attendance from "./pages/student/Attendance.jsx";
+import Syllabus from "./pages/student/Syllabus.jsx";
+import Notifications from "./pages/student/Notifications.jsx";
+import StudentGallery from "./pages/student/StudentGallery.jsx";
+import Assignment from "./pages/student/Assignment.jsx";  
+import Fees from "./pages/student/Fees.jsx";
+  
 function App() {
   const location = useLocation();
 
-  const hideLayout =
-    location.pathname === "/signin" ||
-    location.pathname === "/forgot-password" ||
-    location.pathname === "/reset-password" ||
-    location.pathname === "/verify-otp";
+const hideLayout =
+  location.pathname === "/signin" ||
+  location.pathname === "/forgot-password" ||
+  location.pathname === "/reset-password" ||
+  location.pathname === "/verify-otp" ||
+  location.pathname.startsWith("/student");
 
 
   return (
@@ -44,11 +53,11 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/signin" element={<SignIn />} />
-          <Route path="/student-corner" element={<StudentCorner />} />
+          {/* <Route path="/student-corner" element={<StudentCorner />} /> */}
 
 
-          <Route path="/student-corner/sports" element={<Sports />} />
-          <Route path="/student-corner/placement" element={<Placement />} />
+          <Route path="/Student-corner/sports" element={<Sports />} />
+          <Route path="/Student-corner/placement" element={<Placement />} />
           
 
           {/* Auth Flow */}
@@ -63,9 +72,21 @@ function App() {
           <Route path="/Departments/computer-application/bca" element={<BCA/>} />
           <Route path="/Departments/computer-application/mca" element={<MCA/>} />
 
+         {/* ================= STUDENT DASHBOARD ================= */}
 
+        <Route path="/student" element={<StudentLayout />}>
+          <Route index element={<StudentHome />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="syllabus" element={<Syllabus />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="gallery" element={<StudentGallery />} />
+          <Route path="assignments" element={<Assignment />} />
+          <Route path="fees" element={<Fees />} />
+        </Route>
 
         </Routes>
+
+        <ScrollToTop />
       </main>
 
       {!hideLayout && <Footer />}

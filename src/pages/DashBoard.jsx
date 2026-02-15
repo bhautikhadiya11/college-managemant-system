@@ -19,7 +19,7 @@ const DashBoard = () => {
   const [faculty, setFaculty] = useState(0);
   const [departments, setDepartments] = useState(0);
 
-
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % sliderImages.length);
@@ -42,7 +42,7 @@ const DashBoard = () => {
     <div className="flex flex-col min-h-screen bg-gray-100">
       <main className="grow">
 
-        {/* 🖼 COLLEGE IMAGE SLIDER */}
+        {/* COLLEGE IMAGE SLIDER */}
         <div className="w-full h-[625px] overflow-hidden relative">
           <img
             src={sliderImages[index]}
@@ -105,7 +105,7 @@ const DashBoard = () => {
           </div>
         </section>
 
-        {/* 🌟 BEST IN CAMPUS FLOW */}
+        {/* BEST IN CAMPUS FLOW */}
         <section className="px-10 py-20 bg-gray-50">
           <h2 className="text-4xl font-bold text-center text-blue-950 mb-16">
             Best in Campus Flow
@@ -185,7 +185,7 @@ const DashBoard = () => {
           </div>
         </section>
 
-        {/* 🌿 LIFE AT CAMPUS FLOW */}
+        {/* LIFE AT CAMPUS FLOW */}
         <section className="bg-white py-20">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

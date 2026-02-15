@@ -16,7 +16,7 @@ const VerifyOTP = () => {
       return;
     }
 
-    // 🔐 Backend OTP verify here
+    // Backend OTP verify here
     navigate("/reset-password");
   };
 
