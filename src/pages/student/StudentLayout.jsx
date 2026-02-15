@@ -10,61 +10,55 @@ const StudentLayout = () => {
        : "hover:bg-blue-700 hover:translate-x-1"}`;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-screen overflow-hidden">
+      {/* FIXED SIDEBAR */}
+      <aside className="w-64 bg-blue-900 text-white flex flex-col h-screen fixed left-0 top-0">
+        <div className="p-5 flex flex-col h-full">
+          <h2 className="text-2xl font-bold mb-8">
+            Student Panel
+          </h2>
 
-      {/* SIDEBAR */}
-      <aside className="w-64 bg-blue-900 text-white p-5 flex flex-col">
+          {/* Navigation - removed overflow-y-auto */}
+          <nav className="flex flex-col gap-3 flex-grow">
+            <NavLink to="/student" end className={navClass}>
+              Profile
+            </NavLink>
 
-        <h2 className="text-2xl font-bold mb-8">
-          Student Panel
-        </h2>
+            <NavLink to="/student/attendance" className={navClass}>
+              Attendance
+            </NavLink>
 
-        <nav className="flex flex-col gap-3 flex-grow">
+            <NavLink to="/student/syllabus" className={navClass}>
+              Syllabus
+            </NavLink>
 
-          <NavLink to="/student" end className={navClass}>
-            Dashboard
-          </NavLink>
+            <NavLink to="/student/notifications" className={navClass}>
+              Notifications
+            </NavLink>
 
-          <NavLink to="/student/attendance" className={navClass}>
-            Attendance
-          </NavLink>
+            <NavLink to="/student/gallery" className={navClass}>
+              Gallery
+            </NavLink>
 
-          <NavLink to="/student/syllabus" className={navClass}>
-            Syllabus
-          </NavLink>
+            <NavLink to="/student/assignments" className={navClass}>
+              Assignments
+            </NavLink>
 
-          <NavLink to="/student/notifications" className={navClass}>
-            Notifications
-          </NavLink>
+            <NavLink to="/student/fees" className={navClass}>
+              Fees
+            </NavLink>
+          </nav>
 
-          <NavLink to="/student/gallery" className={navClass}>
-            Gallery
-          </NavLink>
-
-          <NavLink to="/student/assignments" className={navClass}>
-            Assignments
-          </NavLink>  
-
-          <NavLink to="/student/fees" className={navClass}>
-            Fees
-          </NavLink>
-
-        </nav>
-
-        <button
-          onClick={() => navigate("/")}
-          className="bg-red-500 py-2 rounded hover:bg-red-600 transition cursor-pointer"
-        >
-          Logout
-        </button>
-
+          
+        </div>
       </aside>
 
-      {/* RIGHT SIDE CONTENT */}
-      <main className="flex-1 bg-gray-100 p-8 animate-fade">
-        <Outlet />
+      {/* SCROLLABLE CONTENT AREA - offset for fixed sidebar */}
+      <main className="flex-1 ml-64 bg-gray-100 min-h-screen overflow-y-auto">
+        <div className="p-8 animate-fade">
+          <Outlet />
+        </div>
       </main>
-
     </div>
   );
 };

@@ -110,7 +110,7 @@ const SignIn = () => {
       }
 
     } catch (error) {
-      console.error("❌ Login error:", error);
+      console.error(" Login error:", error);
 
       if (error.code === 'ECONNABORTED') {
         setApiError("Request timeout. Please try again.");
