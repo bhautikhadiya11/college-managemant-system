@@ -1,46 +1,53 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const ProfessorLayout = () => {
   const navigate = useNavigate();
 
+  const navClass = ({ isActive }) =>
+    `p-3 rounded transition-all duration-300
+     ${isActive
+       ? "bg-blue-700 scale-105 shadow-lg"
+       : "hover:bg-blue-700 hover:translate-x-1"}`;
+
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex h-screen overflow-hidden">
+      {/* FIXED SIDEBAR */}
+      <aside className="w-64 bg-blue-900 text-white flex flex-col h-screen fixed left-0 top-0">
+        <div className="p-5 flex flex-col h-full">
+          <h2 className="text-2xl font-bold mb-8">
+            Professor Panel
+          </h2>
 
-      <aside className="w-64 bg-indigo-900 text-white p-5 flex flex-col">
+          {/* Navigation - removed overflow-y-auto */}
+          <nav className="flex flex-col gap-3 flex-grow">
+            <NavLink to="/professor" end className={navClass}>
+              Profile
+            </NavLink>
 
-        <h2 className="text-2xl font-bold mb-8">
-          Professor Panel
-        </h2>
+            <NavLink to="/professor/attendance" className={navClass}>
+              Attendance
+            </NavLink>
 
-        <nav className="flex flex-col gap-3 flex-grow">
+            <NavLink to="/professor/syllabus" className={navClass}>
+              Syllabus
+            </NavLink>
 
-          <Link to="/professor" className="hover:bg-indigo-700 p-2 rounded">
-            Dashboard
-          </Link>
+            <NavLink to="/professor/assignments" className={navClass}>
+              Assignments
+            </NavLink>
+            
+          </nav>
 
-          <Link to="/professor/students" className="hover:bg-indigo-700 p-2 rounded">
-            Students
-          </Link>
-
-          <Link to="/professor/marks" className="hover:bg-indigo-700 p-2 rounded">
-            Upload Marks
-          </Link>
-
-        </nav>
-
-        <button
-          onClick={() => navigate("/signin")}
-          className="bg-red-500 py-2 rounded hover:bg-red-600"
-        >
-          Logout
-        </button>
-
+          
+        </div>
       </aside>
 
-      <main className="flex-1 p-6">
-        <Outlet />
+      {/* SCROLLABLE CONTENT AREA - offset for fixed sidebar */}
+      <main className="flex-1 ml-64 bg-gray-100 min-h-screen overflow-y-auto">
+        <div className="p-8 animate-fade">
+          <Outlet />
+        </div>
       </main>
-
     </div>
   );
 };
