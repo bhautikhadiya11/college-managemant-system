@@ -12,6 +12,7 @@ import DashBoard from "./pages/DashBoard";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import VerifyOTP from "./pages/VerifyOTP";
+import ChangePassword from "./components/ChangePassword";
 
 import BBA from "./components/Departments/management/bba";
 import MBA from "./components/Departments/management/mba";
@@ -24,12 +25,19 @@ import Sports from "./pages/Sports";
 
 import StudentLayout from "./pages/student/StudentLayout.jsx";
 import StudentHome from "./pages/student/StudentHome.jsx";
-import Attendance from "./pages/student/Attendance.jsx";
-import Syllabus from "./pages/student/Syllabus.jsx";
+import StudentAttendance from "./pages/student/StudentAttendance.jsx";
+import StudentSyllabus from "./pages/student/StudentSyllabus.jsx";
 import Notifications from "./pages/student/Notifications.jsx";
 import StudentGallery from "./pages/student/StudentGallery.jsx";
-import Assignment from "./pages/student/Assignment.jsx";  
+import StudentAssignment from "./pages/student/StudentAssignment.jsx";  
 import Fees from "./pages/student/Fees.jsx";
+
+import ProfessorLayout from "./pages/professor/ProfessorLayout.jsx";
+import ProfessorHome from "./pages/professor/ProfessorHome.jsx";
+import Attendance from "./pages/professor/Attendance.jsx";
+import Syllabus from "./pages/professor/Syllabus.jsx";
+import Assignment from "./pages/professor/Assignment.jsx";
+
   
 function App() {
   const location = useLocation();
@@ -39,7 +47,8 @@ const hideLayout =
   location.pathname === "/forgot-password" ||
   location.pathname === "/reset-password" ||
   location.pathname === "/verify-otp" ||
-  location.pathname.startsWith("/student");
+  location.pathname.startsWith("/student")||
+  location.pathname.startsWith("/professor") ;
 
 
   return (
@@ -59,9 +68,7 @@ const hideLayout =
           <Route path="/Student-corner/sports" element={<Sports />} />
           <Route path="/Student-corner/placement" element={<Placement />} />
           
-
           {/* Auth Flow */}
-
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
@@ -76,14 +83,25 @@ const hideLayout =
 
         <Route path="/student" element={<StudentLayout />}>
           <Route index element={<StudentHome />} />
-          <Route path="attendance" element={<Attendance />} />
-          <Route path="syllabus" element={<Syllabus />} />
+          <Route path="attendance" element={<StudentAttendance />} />
+          <Route path="change-password" element={<ChangePassword />} />
+          <Route path="syllabus" element={<StudentSyllabus />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="gallery" element={<StudentGallery />} />
-          <Route path="assignments" element={<Assignment />} />
+          <Route path="assignments" element={<StudentAssignment />} />
           <Route path="fees" element={<Fees />} />
         </Route>
 
+        {/* ================= PROFESSOR DASHBOARD ================= */}
+
+        <Route path="/professor" element={<ProfessorLayout />}>
+          <Route index element={<ProfessorHome />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="syllabus" element={<Syllabus />} />
+          <Route path="assignments" element={<Assignment />} />
+          <Route path="change-password" element={<ChangePassword />} />
+        </Route>
+        
         </Routes>
 
         <ScrollToTop />
