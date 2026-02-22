@@ -4,61 +4,73 @@ import { ArrowLeft } from "lucide-react";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [show, setShow] = useState(false); // 🔥 animation trigger
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setShow(true); // animate on mount
-  }, []);
+  useEffect(() => setShow(true), []);
 
   const isValidEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setMessage("");
 
     if (!email) {
-      alert("Email is required");
+      setError("Email is required");
       return;
     }
-
     if (!isValidEmail(email)) {
-      alert("Enter a valid email address");
+      setError("Enter a valid email address");
       return;
     }
 
-    navigate("/verify-otp", { state: { email } });
+    setLoading(true);
+    try {
+      const response = await fetch("/api/auth/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+      setMessage(data.message); // "OTP sent" or generic message
+      // Wait a moment then navigate to OTP page
+      setTimeout(() => {
+        navigate("/verify-otp", { state: { email } });
+      }, 1500);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-blue-100 px-4">
-
-      {/* BACK BUTTON */}
-       <button
+      <button
         onClick={() => navigate("/signin")}
-        className="absolute top-4 left-4 sm:top-5 sm:left-5
-        bg-blue-600 text-white text-xs sm:text-sm
-        px-3 sm:px-4 py-1.5 rounded-md font-medium
-        shadow-md hover:bg-blue-700 transition cursor-pointer justify-center flex gap-1 items-center"
+        className="absolute top-4 left-4 sm:top-5 sm:left-5 bg-blue-600 text-white text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-md font-medium shadow-md hover:bg-blue-700 transition cursor-pointer flex gap-1 items-center"
       >
-       <ArrowLeft size={18}/>Back
+        <ArrowLeft size={18} /> Back
       </button>
 
-      {/* CARD WITH FADE + SCALE */}
       <div
-        className={`
-          bg-white w-full max-w-md p-8 rounded-2xl shadow-xl
-          transform transition-all duration-500 ease-out
-          ${show ? "opacity-100 scale-100" : "opacity-0 scale-95"}
-        `}
+        className={`bg-white w-full max-w-md p-8 rounded-2xl shadow-xl transform transition-all duration-500 ease-out ${
+          show ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        }`}
       >
-        <h2 className="text-2xl font-bold text-center mb-2">
-          Forgot Password
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-2">Forgot Password</h2>
+        <p className="text-gray-500 text-center mb-6">Enter your registered Email ID</p>
 
-        <p className="text-gray-500 text-center mb-6">
-          Enter your registered Email ID
-        </p>
+        {error && <div className="mb-4 text-red-600 text-center">{error}</div>}
+        {message && <div className="mb-4 text-green-600 text-center">{message}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
@@ -67,13 +79,14 @@ const ForgotPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500"
+            disabled={loading}
           />
-
           <button
             type="submit"
-            className="w-full bg-blue-900 text-white py-3 rounded-xl hover:bg-blue-800 transition cursor-pointer font-medium"
+            disabled={loading}
+            className="w-full bg-blue-900 text-white py-3 rounded-xl hover:bg-blue-800 transition cursor-pointer font-medium disabled:opacity-50"
           >
-            Send OTP
+            {loading ? "Sending..." : "Send OTP"}
           </button>
         </form>
       </div>
