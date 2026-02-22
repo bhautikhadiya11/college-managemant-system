@@ -124,7 +124,7 @@ const StudentHome = () => {
       program: data.program || data.course || 'Not specified',
       batch: data.batch || 'N/A',
       
-      //  Semester - yeh use karo
+      //  Semester
       semester: data.currentSemester || data.semesterName || 'Not specified',
       semesterName: data.semesterName,
       academicYear: data.academicYear || 'N/A',
