@@ -91,61 +91,82 @@ const ProfessorHome = () => {
   };
 
   // Format professor data
-  const formatProfessorData = (data) => {
-    // Format joining date
-    let joiningDate = 'Not available';
-    if (data.joiningDate) {
-      try {
-        const date = new Date(data.joiningDate);
-        if (!isNaN(date.getTime())) {
-          joiningDate = date.toLocaleDateString('en-IN', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric'
-          });
-        }
-      } catch (e) { /* ignore */ }
+const formatProfessorData = (data) => {
+  // Format joining date
+  let joiningDate = 'Not available';
+  if (data.joiningDate) {
+    try {
+      const date = new Date(data.joiningDate);
+      if (!isNaN(date.getTime())) {
+        joiningDate = date.toLocaleDateString('en-IN', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+      }
+    } catch (e) { /* ignore */ }
+  }
+  
+  // Format last login
+  let lastLogin = 'Never logged in';
+  if (data.lastLogin) {
+    try {
+      const date = new Date(data.lastLogin);
+      if (!isNaN(date.getTime())) {
+        lastLogin = date.toLocaleString('en-IN', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      }
+    } catch (e) { /* ignore */ }
+  }
+  
+  const professorId = data.id || data._id || 'N/A';
+  
+  // Extract department info (populated object expected)
+  let departmentName = 'Not specified';
+  let departmentCode = '';
+  if (data.department) {
+    if (typeof data.department === 'object' && data.department.name) {
+      departmentName = data.department.name;
+      departmentCode = data.department.code || '';
+    } else if (typeof data.department === 'string') {
+      departmentName = data.department;        // fallback
     }
-    
-    // Format last login
-    let lastLogin = 'Never logged in';
-    if (data.lastLogin) {
-      try {
-        const date = new Date(data.lastLogin);
-        if (!isNaN(date.getTime())) {
-          lastLogin = date.toLocaleString('en-IN', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-          });
-        }
-      } catch (e) { /* ignore */ }
-    }
-    
-    const professorId = data.id || data._id || 'N/A';
-    const displayId = professorId !== 'N/A' 
-      ? professorId.toString().slice(-6).toUpperCase() 
-      : 'N/A';
+  }
 
-    return {
-      id: professorId,
-      displayId,
-      name: data.name || 'Professor',
-      email: data.email || '',
-      department: data.department || 'Not specified',
-      designation: data.designation || 'Professor',
-      contactNumber: data.contactNumber || 'Not provided',
-      joiningDate,
-      lastLogin,
-      isActive: data.isActive === true,
-      statusText: data.isActive === true ? 'Active' : 'Inactive',
-      profilePicture: data.profilePicture || null,
-      coursesCount: data.coursesTaught?.length || 0,
-      coursesTaught: data.coursesTaught || [],
-    };
+  // Generate display ID: department code + two-digit number from ObjectId
+  let displayId = 'N/A';
+  if (professorId !== 'N/A' && departmentCode) {
+    // Take last two characters of ObjectId (hex) and convert to decimal 0-99
+    const lastTwoHex = professorId.toString().slice(-2);
+    const lastTwoDecimal = parseInt(lastTwoHex, 16) % 100;
+    const numberPart = lastTwoDecimal.toString().padStart(2, '0');
+    displayId = `${departmentCode}${numberPart}`.toUpperCase();
+  } else if (professorId !== 'N/A') {
+    // Fallback to old method if department code missing
+    displayId = professorId.toString().slice(-6).toUpperCase();
+  }
+
+  return {
+    id: professorId,
+    displayId,
+    name: data.name || 'Professor',
+    email: data.email || '',
+    department: departmentName,
+    contactNumber: data.contactNumber || 'Not provided',
+    joiningDate,
+    lastLogin,
+    isActive: data.isActive === true,
+    statusText: data.isActive === true ? 'Active' : 'Inactive',
+    profilePicture: data.profilePicture || null,
+    coursesCount: data.coursesTaught?.length || 0,
+    coursesTaught: data.coursesTaught || [],
   };
+};
 
   const navigateToAttendance = () => navigate('/professor/attendance');
   const navigateToSyllabus = () => navigate('/professor/syllabus');
@@ -230,10 +251,6 @@ const ProfessorHome = () => {
                 <p className="text-purple-200 text-sm">Department</p>
                 <p className="font-semibold">{professorData.department}</p>
               </div>
-              <div>
-                <p className="text-purple-200 text-sm">Designation</p>
-                <p className="font-semibold">{professorData.designation}</p>
-              </div>
             </div>
           </div>
         </div>
@@ -253,7 +270,6 @@ const ProfessorHome = () => {
           <div className="space-y-3">
             <InfoItem label="Professor ID" value={professorData.displayId} />
             <InfoItem label="Department" value={professorData.department} />
-            <InfoItem label="Designation" value={professorData.designation} />
             <InfoItem label="Joining Date" value={professorData.joiningDate} />
             <InfoItem label="Status" value={professorData.statusText} />
           </div>

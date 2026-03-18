@@ -101,60 +101,64 @@ const StudentHome = () => {
   };
 
   // Format student data
-  const formatStudentData = (data) => {
-    // Semester name extract karo
-    let semesterDisplay = 'Not Assigned';
-    
-    if (data.semesterName) {
-      semesterDisplay = data.semesterName;
-    } else if (data.currentSemester) {
-      semesterDisplay = data.currentSemester;
-    } else if (data.semester) {
-      semesterDisplay = data.semester;
-    } else if (data.semesterFullInfo?.name) {
-      semesterDisplay = data.semesterFullInfo.name;
-    }
-    
-    return {
-      _id: data._id,
-      name: data.name || 'Student',
-      email: data.email || '',
-      enrollmentNum: data.enrollmentNum || data.enrollmentNumber || '',
-      ber: data.ber || data.rollNumber || '',
-      program: data.program || data.course || 'Not specified',
-      batch: data.batch || 'N/A',
-      
-      //  Semester
-      semester: data.currentSemester || data.semesterName || 'Not specified',
-      semesterName: data.semesterName,
-      academicYear: data.academicYear || 'N/A',
-      semesterIsActive: data.semesterIsActive,
+const formatStudentData = (data) => {
+  // Extract semester name from populated semesterID
+  let semesterDisplay = 'Not Assigned';
+  if (data.semesterID?.semesterName) {
+    semesterDisplay = data.semesterID.semesterName;
+  } else if (data.currentSemester) {
+    semesterDisplay = data.currentSemester;
+  } else if (data.semester) {
+    semesterDisplay = data.semester;
+  }
 
-      
-      contactNumber: data.contactNumber || 'N/A',
-      dob: data.dob ? new Date(data.dob).toLocaleDateString('en-IN', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      }) : 'N/A',
-      
-      lastLogin: data.lastLogin ? new Date(data.lastLogin).toLocaleString('en-IN', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      }) : 'N/A',
-      
-      isActive: data.isActive !== undefined ? data.isActive : true,
-      
-      // Stats
-      attendance: data.attendance || '92%',
-      subjects: data.subjects || '6',
-      notifications: data.notifications || '3',
-      cgpa: data.cgpa || '8.5'
-    };
+  // Extract department name from populated department
+  const departmentName = data.department?.name || 'Not assigned';
+
+  return {
+    _id: data._id,
+    name: data.name || 'Student',
+    email: data.email || '',
+    enrollmentNum: data.enrollmentNum || '',
+    
+    // Department info
+    department: departmentName,
+    departmentCode: data.department?.code || '',
+    
+    // New fields
+    category: data.category || 'N/A',
+    caste: data.caste || '',
+    subcaste: data.subcaste || '',
+    gender: data.gender || 'N/A',
+    
+    // Address
+    address: data.address || '',
+    city: data.city || '',
+    state: data.state || '',
+    pincode: data.pincode || '',
+    
+    // Semester
+    semester: semesterDisplay,
+    batch: data.batch || 'N/A',
+    
+    contactNumber: data.contactNumber || 'N/A',
+    dob: data.dob ? new Date(data.dob).toLocaleDateString('en-IN', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }) : 'N/A',
+    
+    lastLogin: data.lastLogin ? new Date(data.lastLogin).toLocaleString('en-IN', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }) : 'N/A',
+    
+    isActive: data.isActive !== undefined ? data.isActive : true,
   };
+};
 
   const handleLogout = () => {
     localStorage.clear();
@@ -235,12 +239,8 @@ const StudentHome = () => {
                 <p className="font-semibold">{studentData.enrollmentNum}</p>
               </div>
               <div>
-                <p className="text-blue-200 text-sm">Roll Number</p>
-                <p className="font-semibold">{studentData.ber}</p>
-              </div>
-              <div>
                 <p className="text-blue-200 text-sm">Program</p>
-                <p className="font-semibold">{studentData.program}</p>
+                <p className="font-semibold">{studentData.department  }</p>
               </div>
               <div>
                 <p className="text-blue-200 text-sm">Batch</p>
@@ -253,17 +253,19 @@ const StudentHome = () => {
 
       {/* Info Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-        {/* Academic Info */}
+       {/* Academic Info */}
         <div className="bg-white p-6 rounded-xl shadow-md">
           <h3 className="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">📚 Academic Information</h3>
           <div className="space-y-3">
-            <InfoItem label="Program" value={studentData.program} />
-            <InfoItem label="Current Semester" value={studentData.currentSemester || studentData.semesterName || 'Not Assigned'} />            <InfoItem label="Batch" value={studentData.batch} />
+            <InfoItem label="Program" value={studentData.department} />
+            <InfoItem label="Current Semester" value={studentData.semester} />
+            <InfoItem label="Batch" value={studentData.batch} />
             <InfoItem label="Enrollment Number" value={studentData.enrollmentNum} />
-            <InfoItem label="Roll Number" value={studentData.ber} />
+            {/* Remove the Roll Number line if not needed */}
           </div>
         </div>
 
+        
         {/* Personal Details */}
         <div className="bg-white p-6 rounded-xl shadow-md">
           <h3 className="text-lg font-semibold mb-4 text-gray-800 border-b pb-2">👤 Personal Details</h3>
@@ -272,6 +274,7 @@ const StudentHome = () => {
             <InfoItem label="Email" value={studentData.email} />
             <InfoItem label="Contact" value={studentData.contactNumber} />
             <InfoItem label="Date of Birth" value={studentData.dob} />
+            <InfoItem label="Gender" value={studentData.gender} />
             <InfoItem label="Last Login" value={studentData.lastLogin} />
           </div>
         </div>
