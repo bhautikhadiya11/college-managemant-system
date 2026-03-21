@@ -35,8 +35,8 @@ const SignIn = () => {
 
     if (!password.trim()) {
       err.password = "Please fill this input";
-    } else if (password.length < 8) {
-      err.password = "Password must be at least 8 characters";
+    } else if (password.length < 6) {
+      err.password = "Password must be at least 6 characters";
     }
 
     if (role === "student") {
