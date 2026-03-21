@@ -6,6 +6,7 @@ const StudentNotifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [marking, setMarking] = useState(false);
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -28,6 +29,37 @@ const StudentNotifications = () => {
     fetchNotifications();
   }, []);
 
+  // Automatically mark unread notifications as read
+  useEffect(() => {
+    if (notifications.length > 0 && !marking) {
+      const unreadIds = notifications
+        .filter(n => !n.isRead)
+        .map(n => n._id);
+      if (unreadIds.length > 0) {
+        setMarking(true);
+        // Mark each unread notification
+        Promise.all(
+          unreadIds.map(async (id) => {
+            try {
+              const token = localStorage.getItem('authToken');
+              await axios.put(
+                `http://localhost:5000/api/notifications/${id}/read`,
+                {},
+                { headers: { Authorization: `Bearer ${token}` } }
+              );
+              // Update local state for this notification
+              setNotifications(prev =>
+                prev.map(n => n._id === id ? { ...n, isRead: true } : n)
+              );
+            } catch (err) {
+              console.error(`Failed to mark ${id} as read`, err);
+            }
+          })
+        ).finally(() => setMarking(false));
+      }
+    }
+  }, [notifications, marking]);
+
   if (loading) return <div className="text-center py-8">Loading notifications...</div>;
   if (error) return <div className="text-red-500 text-center py-8">{error}</div>;
 
@@ -39,7 +71,10 @@ const StudentNotifications = () => {
       ) : (
         <div className="space-y-6">
           {notifications.map(notif => (
-            <div key={notif._id} className="bg-white rounded-lg shadow-md border-l-4 border-blue-500 overflow-hidden">
+            <div
+              key={notif._id}
+              className={`bg-white rounded-lg shadow-md border-l-4 ${notif.isRead ? 'border-gray-300' : 'border-blue-500'} overflow-hidden`}
+            >
               <div className="p-5">
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-semibold text-gray-800">{notif.title}</h2>
@@ -60,6 +95,7 @@ const StudentNotifications = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-blue-600 hover:underline bg-gray-100 px-3 py-1 rounded"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           {att.fileType === 'image' ? <ImageIcon size={14} /> : <FileText size={14} />}
                           {att.filename}
@@ -71,6 +107,11 @@ const StudentNotifications = () => {
                 <div className="mt-3 text-xs text-gray-400">
                   From: {notif.createdBy?.firstName || 'Admin'} {notif.createdBy?.lastName || ''}
                 </div>
+                {!notif.isRead && (
+                  <div className="mt-2 text-xs text-blue-600 font-medium">
+                    Marked as read automatically (you can close this)
+                  </div>
+                )}
               </div>
             </div>
           ))}
