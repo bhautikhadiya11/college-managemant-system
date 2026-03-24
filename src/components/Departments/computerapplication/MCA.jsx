@@ -6,7 +6,7 @@ import {
   Trophy,
 } from "lucide-react";
 
-const MCOM = () => {
+const MCA = () => {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
@@ -19,8 +19,8 @@ const MCOM = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[620px] md:h-[720px]">
         <img
-          src="https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg"
-          alt="MCom Background"
+          src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg"
+          alt="MCA Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/45"></div>
@@ -28,10 +28,10 @@ const MCOM = () => {
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              Master of Commerce (M.Com)
+              Master of Computer Applications (MCA)
             </h1>
             <p className="text-gray-200 text-lg">
-              Deepening expertise in commerce, finance, and business research.
+              Developing advanced professionals for the digital future.
             </p>
           </div>
         </div>
@@ -48,44 +48,45 @@ const MCOM = () => {
         </div>
       </div>
 
-      {/* ================= ABOUT MCOM ================= */}
+      {/* ================= ABOUT MCA ================= */}
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/4386379/pexels-photo-4386379.jpeg"
-            alt="About MCom"
+            src="https://images.pexels.com/photos/34804003/pexels-photo-34804003.jpeg"
+            alt="About MCA"
             className="w-full h-full object-cover"
           />
         </div>
 
-        <div className="md:w-1/2 w-full bg-blue-950 text-white px-10 py-16">
-          <h2 className="text-3xl font-bold mb-6">About M.Com</h2>
+        <div className="md:w-1/2 w-full bg-blue-900 text-white px-10 py-16">
+          <h2 className="text-3xl font-bold mb-6">About MCA</h2>
 
           <p className="text-gray-200 leading-relaxed mb-5">
-            The Master of Commerce (M.Com) programme is designed for graduates
-            seeking advanced knowledge in commerce, finance, accounting,
-            taxation, and economic analysis. The programme strengthens
-            conceptual clarity and analytical capabilities required for
-            professional and academic growth.
+            The Master of Computer Applications (MCA) programme is designed
+            to provide advanced knowledge in computer science, software
+            development, and information technology. The programme focuses
+            on building strong technical, analytical, and problem-solving
+            skills required in today’s technology-driven industries.
           </p>
 
           <p className="text-gray-200 leading-relaxed mb-5">
-            The curriculum focuses on research orientation, critical thinking,
-            and advanced financial practices. Students engage in seminars,
-            case-based discussions, data analysis, and project work to gain
-            in-depth subject expertise.
+            The curriculum includes advanced programming, data structures,
+            algorithms, databases, cloud computing, artificial intelligence,
+            and emerging technologies, along with hands-on practical
+            exposure through laboratories and real-world projects.
           </p>
 
           <p className="text-gray-200 leading-relaxed mb-5">
-            Emphasis is also placed on ethical business practices, regulatory
-            frameworks, and contemporary developments in global commerce and
-            financial markets.
+            Emphasis is placed on system design, application development,
+            research orientation, and professional ethics to ensure
+            industry relevance and global competitiveness.
           </p>
 
           <p className="text-gray-200 leading-relaxed">
-            Graduates are well-prepared for careers in academics, research,
-            banking, finance, taxation, corporate management, or for pursuing
-            doctoral studies and professional certifications.
+            Graduates of the MCA programme are well-prepared for careers
+            in software development, system analysis, data science,
+            cloud engineering, cyber security, or higher academic
+            research and doctoral studies.
           </p>
         </div>
       </div>
@@ -102,8 +103,8 @@ const MCOM = () => {
         <ul className="grid md:grid-cols-2 gap-6 text-gray-900">
           <li>✔ Duration: 2 Years (4 Semesters)</li>
           <li>✔ Full-Time Postgraduate Programme</li>
-          <li>✔ Research & Theory-Oriented Curriculum</li>
-          <li>✔ Projects, Seminars & Dissertation Work</li>
+          <li>✔ Advanced & Industry-Oriented Curriculum</li>
+          <li>✔ Projects, Internships & Research Work</li>
         </ul>
       </section>
 
@@ -119,12 +120,12 @@ const MCOM = () => {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
-              "Advanced Accounting",
-              "Corporate Finance",
-              "Tax Planning & Compliance",
-              "Banking & Insurance",
-              "Business Economics",
-              "Financial Analytics",
+              "Software Engineering",
+              "Data Science & Analytics",
+              "Artificial Intelligence & Machine Learning",
+              "Cyber Security",
+              "Cloud Computing",
+              "Full Stack Development",
             ].map((spec, i) => (
               <div key={i} className="bg-white p-5 rounded-lg shadow">
                 <h3 className="font-semibold">{spec}</h3>
@@ -143,9 +144,9 @@ const MCOM = () => {
           Eligibility Criteria
         </h2>
         <p className="text-gray-700 max-w-3xl">
-          Bachelor’s degree in Commerce or a related discipline from a
-          recognized university with eligibility criteria as prescribed
-          by the institution.
+          Bachelor’s degree in Computer Applications, Computer Science,
+          Information Technology, or related discipline with Mathematics
+          as a subject at 10+2 or graduation level as per university norms.
         </p>
       </section>
 
@@ -162,19 +163,19 @@ const MCOM = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Finance & Investment Club",
-                img: "https://images.pexels.com/photos/4386369/pexels-photo-4386369.jpeg",
-                desc: "Focuses on financial markets, investment analysis, portfolio management, and corporate finance discussions.",
+                title: "Advanced Coding Club",
+                img: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
+                desc: "Enhances advanced programming skills through coding challenges, hackathons, and collaborative projects.",
               },
               {
-                title: "Research & Academic Forum",
-                img: "https://images.pexels.com/photos/4386345/pexels-photo-4386345.jpeg",
-                desc: "Encourages academic research, paper presentations, seminars, and scholarly discussions.",
+                title: "AI & Data Science Club",
+                img: "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg",
+                desc: "Focuses on artificial intelligence, data science projects, research discussions, and innovation activities.",
               },
               {
-                title: "Cultural & Wellness Club",
-                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg",
-                desc: "Promotes balance through cultural programs, sports activities, and wellness initiatives.",
+                title: "Cyber & Cloud Club",
+                img: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
+                desc: "Promotes knowledge in cyber security, cloud platforms, ethical hacking, and emerging IT technologies.",
               },
             ].map((club, i) => (
               <div key={i} className="bg-white rounded-xl shadow">
@@ -207,19 +208,19 @@ const MCOM = () => {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
           {[
             {
-              title: "National Commerce Conferences",
-              img: "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
-              desc: "Students presented research papers and participated in national-level commerce and finance conferences.",
+              title: "National Hackathons & Coding Challenges",
+              img: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg",
+              desc: "MCA students participated and secured top positions in national-level hackathons and coding competitions.",
             },
             {
-              title: "Professional Certification Workshops",
-              img: "https://images.pexels.com/photos/4386372/pexels-photo-4386372.jpeg",
-              desc: "Workshops conducted on CA, CS, CMA, and financial certification pathways.",
+              title: "Industry-Oriented Tech Workshops",
+              img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+              desc: "Workshops conducted on cloud computing, AI tools, cyber security, and software development frameworks.",
             },
             {
-              title: "Industry Interaction Programs",
+              title: "Research & Innovation Projects",
               img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
-              desc: "Interactive sessions with industry experts, bankers, and finance professionals.",
+              desc: "Students developed innovative applications and research projects addressing real-world technology challenges.",
             },
           ].map((item, i) => (
             <div key={i} className="bg-white rounded-xl shadow">
@@ -243,7 +244,7 @@ const MCOM = () => {
   );
 };
 
-export default MCOM;
+export default MCA;
 
 /* ================= NAV CARD ================= */
 
