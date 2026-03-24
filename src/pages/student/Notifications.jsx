@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { FileText, Image as ImageIcon, Calendar } from 'lucide-react';
 
 const StudentNotifications = () => {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -10,8 +12,14 @@ const StudentNotifications = () => {
 
   useEffect(() => {
     const fetchNotifications = async () => {
+      const token = sessionStorage.getItem('authToken');
+      if (!token) {
+        setError('No authentication token found. Please log in again.');
+        setLoading(false);
+        return;
+      }
+
       try {
-        const token = localStorage.getItem('authToken');
         const res = await axios.get('http://localhost:5000/api/notifications', {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -21,13 +29,20 @@ const StudentNotifications = () => {
           setError('Failed to load notifications');
         }
       } catch (err) {
-        setError(err.response?.data?.message || 'Server error');
+        console.error('Notification fetch error:', err);
+        if (err.response?.status === 401) {
+          sessionStorage.removeItem('authToken');
+          sessionStorage.removeItem('userRole');
+          navigate('/');
+        } else {
+          setError(err.response?.data?.message || 'Server error');
+        }
       } finally {
         setLoading(false);
       }
     };
     fetchNotifications();
-  }, []);
+  }, [navigate]);
 
   // Automatically mark unread notifications as read
   useEffect(() => {
@@ -41,7 +56,8 @@ const StudentNotifications = () => {
         Promise.all(
           unreadIds.map(async (id) => {
             try {
-              const token = localStorage.getItem('authToken');
+              const token = sessionStorage.getItem('authToken');
+              if (!token) return;
               await axios.put(
                 `http://localhost:5000/api/notifications/${id}/read`,
                 {},
@@ -109,7 +125,7 @@ const StudentNotifications = () => {
                 </div>
                 {!notif.isRead && (
                   <div className="mt-2 text-xs text-blue-600 font-medium">
-                    Marked as read automatically (you can close this)
+                    Marked as read automatically
                   </div>
                 )}
               </div>

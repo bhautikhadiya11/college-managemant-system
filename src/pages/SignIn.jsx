@@ -45,14 +45,7 @@ const SignIn = () => {
       } else if (!/^\d{12}$/.test(userId)) {
         err.userId = "Enrollment must be 12 digits";
       }
-        // } else {
-      //   const year = parseInt(userId.substring(0, 4));
-      //   if (year < 2000 || year > new Date().getFullYear()) {
-      //     err.userId = "Invalid admission year";
-      //   }
-      // }
-    }
-     else {
+    } else {
       if (!userId.trim()) {
         err.userId = "Please fill this input";
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userId)) {
@@ -92,11 +85,11 @@ const SignIn = () => {
 
       if (response.data.success) {
         if (response.data.token) {
-          localStorage.setItem('authToken', response.data.token);
-          localStorage.setItem('userRole', role);
-          localStorage.setItem('userId', userId);
+          sessionStorage.setItem('authToken', response.data.token);
+          sessionStorage.setItem('userRole', role);
+          sessionStorage.setItem('userId', userId);
           if (response.data.user) {
-            localStorage.setItem('userData', JSON.stringify(response.data.user));
+            sessionStorage.setItem('userData', JSON.stringify(response.data.user));
           }
         }
 
@@ -110,29 +103,35 @@ const SignIn = () => {
       }
 
     } catch (error) {
-      console.error(" Login error:", error);
+  console.error(" Login error:", error);
+  console.error("Error object details:", {
+    message: error.message,
+    code: error.code,
+    response: error.response,
+    request: error.request,
+  });
 
-      if (error.code === 'ECONNABORTED') {
-        setApiError("Request timeout. Please try again.");
-      } else if (error.response) {
-        const status = error.response.status;
-        const message = error.response.data?.message || error.response.data?.error;
+  if (error.code === 'ECONNABORTED') {
+    setApiError("Request timeout. Please try again.");
+  } else if (error.response) {
+    const status = error.response.status;
+    const message = error.response.data?.message || error.response.data?.error;
 
-        if (status === 401) {
-          setApiError("Invalid enrollment number or password");
-        } else if (status === 404) {
-          setApiError("Login endpoint not found");
-        } else if (status === 500) {
-          setApiError("Server error. Please try again later.");
-        } else {
-          setApiError(message || `Error ${status}: Login failed`);
-        }
-      } else if (error.request) {
-        setApiError("Cannot connect to server. Please check if backend is running.");
-      } else {
-        setApiError("An error occurred. Please try again.");
-      }
-    } finally {
+    if (status === 401) {
+      setApiError("Invalid email or password. Please check your credentials.");
+    } else if (status === 404) {
+      setApiError("Login endpoint not found. Please contact support.");
+    } else if (status === 500) {
+      setApiError("Server error. Please try again later.");
+    } else {
+      setApiError(message || `Error ${status}: Login failed. Please check your credentials.`);
+    }
+  } else if (error.request) {
+    setApiError("Cannot connect to server. Please check if backend is running at http://localhost:5000.");
+  } else {
+    setApiError("An unexpected error occurred. Please try again.");
+  }
+} finally {
       setLoading(false);
     }
   };
@@ -225,7 +224,7 @@ const SignIn = () => {
             placeholder={role === "student"
               ? "Student Enrollment ID"
               : "Professor Email ID"}
-            autoComplete="off" // ⛔️ Browser autofill band karo
+            autoComplete="off"
             className={`w-full border rounded-xl
             px-4 py-2.5 sm:py-3 text-sm outline-none mb-3
             focus:ring-2 focus:ring-blue-500
@@ -247,7 +246,7 @@ const SignIn = () => {
               onKeyPress={handleKeyPress}
               disabled={loading}
               placeholder="Password"
-              autoComplete="new-password" // ⛔️ Password autofill band karo
+              autoComplete="new-password"
               className={`w-full border rounded-xl
               px-4 py-2.5 sm:py-3 pr-12 text-sm outline-none
               focus:ring-2 focus:ring-blue-500

@@ -7,9 +7,22 @@ const StudentLayout = () => {
   const location = useLocation();
   const [unreadCount, setUnreadCount] = useState(0);
 
+  // Check authentication on mount and before every render
+  useEffect(() => {
+    const token = sessionStorage.getItem('authToken');
+    const role = sessionStorage.getItem('userRole');
+    if (!token || role !== 'student') {
+      sessionStorage.removeItem('authToken');
+      sessionStorage.removeItem('userRole');
+      navigate('/');
+    }
+  }, [navigate]);
+
   const fetchUnreadCount = async () => {
     try {
-      const token = localStorage.getItem('authToken');
+      const token = sessionStorage.getItem('authToken');
+      if (!token) return;
+
       const res = await axios.get('http://localhost:5000/api/notifications/unread-count', {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -18,12 +31,18 @@ const StudentLayout = () => {
       }
     } catch (err) {
       console.error('Failed to fetch unread count:', err);
+      if (err.response?.status === 401) {
+        // Token expired or invalid
+        sessionStorage.removeItem('authToken');
+        sessionStorage.removeItem('userRole');
+        navigate('/');
+      }
     }
   };
 
   useEffect(() => {
     fetchUnreadCount();
-    const interval = setInterval(fetchUnreadCount, 30000); // every 30 seconds
+    const interval = setInterval(fetchUnreadCount, 30000);
     return () => clearInterval(interval);
   }, []);
 
