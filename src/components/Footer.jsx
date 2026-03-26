@@ -29,7 +29,6 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-white font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:underline">Home</Link></li>
             <li><Link to="/about" className="hover:underline">About</Link></li>
             <li><Link to="/gallery" className="hover:underline">Gallery</Link></li>
             <li><Link to="/contact" className="hover:underline">Contact</Link></li>
@@ -40,10 +39,7 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-white font-semibold mb-4">Student</h3>
           <ul className="space-y-2 text-sm">
-            <li>Student Login</li>
-            <li>Attendance</li>
-            <li>Fees</li>
-            <li>Profile</li>
+            <li><Link to="/signin" className="hover:underline">Student Login</Link></li>
           </ul>
         </div>
 
