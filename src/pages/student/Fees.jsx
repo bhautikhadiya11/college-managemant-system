@@ -16,27 +16,37 @@ const StudentFees = () => {
     const fetchFeeStatus = async () => {
       try {
         const token = sessionStorage.getItem('authToken');
+        if (!token) {
+          setError('Please log in again');
+          setLoading(false);
+          return;
+        }
         const res = await axios.get('http://localhost:5000/api/fees/status', {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.data.success) {
           setSemesters(res.data.data);
-          // Initialize with unpaid semesters
           const unpaid = res.data.data.filter(sem => !sem.paid).map(sem => sem.semester);
           setSelectedSemesters(unpaid);
-          console.log('Initial unpaid semesters:', unpaid);
         } else {
           setError(res.data.message);
         }
       } catch (err) {
-        console.error(err);
-        setError('Failed to fetch fee status');
+        console.error('Fetch fee status error:', err);
+        if (err.response?.status === 401) {
+          setError('Session expired. Please log in again.');
+          sessionStorage.removeItem('authToken');
+          sessionStorage.removeItem('userRole');
+          setTimeout(() => navigate('/'), 2000);
+        } else {
+          setError('Failed to fetch fee status');
+        }
       } finally {
         setLoading(false);
       }
     };
     fetchFeeStatus();
-  }, []);
+  }, [navigate]);
 
   const loadRazorpayScript = () => new Promise((resolve) => {
     const script = document.createElement('script');
@@ -45,6 +55,16 @@ const StudentFees = () => {
     script.onerror = () => resolve(false);
     document.body.appendChild(script);
   });
+
+  const downloadReceipt = (feeId) => {
+    const token = sessionStorage.getItem('authToken');
+    if (!token) {
+      alert('Please log in again');
+      return;
+    }
+    const url = `http://localhost:5000/api/fees/receipt/${feeId}?token=${encodeURIComponent(token)}`;
+    window.open(url, '_blank');
+  };
 
   const handlePayment = async () => {
     if (selectedSemesters.length === 0) {
@@ -55,15 +75,13 @@ const StudentFees = () => {
     setError('');
     try {
       const token = sessionStorage.getItem('authToken');
-      console.log('📤 Sending semesters:', selectedSemesters);
       const orderRes = await axios.post(
         'http://localhost:5000/api/fees/create-order',
         { semesters: selectedSemesters },
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (!orderRes.data.success) throw new Error(orderRes.data.message);
-      const { orderId, amount, key, semesters: confirmedSemesters } = orderRes.data;
-      console.log('✅ Order created for semesters:', confirmedSemesters);
+      const { orderId, amount, key } = orderRes.data;
 
       const scriptLoaded = await loadRazorpayScript();
       if (!scriptLoaded) throw new Error('Failed to load Razorpay SDK');
@@ -87,7 +105,6 @@ const StudentFees = () => {
           );
           if (verifyRes.data.success) {
             setSuccess(`Payment successful for semesters ${selectedSemesters.join(', ')}!`);
-            // Refresh status
             const statusRes = await axios.get('http://localhost:5000/api/fees/status', {
               headers: { Authorization: `Bearer ${token}` },
             });
@@ -112,17 +129,14 @@ const StudentFees = () => {
   };
 
   const toggleSemester = (semester) => {
-    setSelectedSemesters(prev => {
-      const updated = prev.includes(semester) ? prev.filter(s => s !== semester) : [...prev, semester];
-      console.log('Selected semesters after toggle:', updated);
-      return updated;
-    });
+    setSelectedSemesters(prev =>
+      prev.includes(semester) ? prev.filter(s => s !== semester) : [...prev, semester]
+    );
   };
 
   const selectAllUnpaid = () => {
     const unpaid = semesters.filter(sem => !sem.paid).map(sem => sem.semester);
     setSelectedSemesters(unpaid);
-    console.log('Selected all unpaid:', unpaid);
   };
 
   const totalAmount = selectedSemesters.reduce((sum, sem) => {
@@ -152,8 +166,8 @@ const StudentFees = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Receipt</th>
-             </tr>
-          </thead>
+              </tr>
+             </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {semesters.map(sem => (
               <tr key={sem.semester} className={sem.paid ? 'bg-gray-50' : ''}>
@@ -166,7 +180,7 @@ const StudentFees = () => {
                       className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                     />
                   )}
-                </td>
+                  </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Semester {sem.semester}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{formatAmount(sem.amount)}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -175,9 +189,9 @@ const StudentFees = () => {
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {sem.paid && sem.receipt ? (
+                  {sem.paid && sem.receipt && sem._id ? (
                     <button
-                      onClick={() => alert(`Receipt: ${sem.receipt}`)}
+                      onClick={() => downloadReceipt(sem._id)}
                       className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
                     >
                       <Download size={16} /> Receipt
