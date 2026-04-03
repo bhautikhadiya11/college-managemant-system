@@ -19,21 +19,30 @@ const AttendancePage = () => {
   const [reportDate, setReportDate] = useState(new Date().toISOString().split('T')[0]);
   const [reportStudents, setReportStudents] = useState([]);
   const [loadingReport, setLoadingReport] = useState(false);
+  const [hasSession, setHasSession] = useState(true);
+
+  // ✅ Auto-dismiss messages after 5 seconds
+  useEffect(() => {
+    if (message.text) {
+      const timer = setTimeout(() => {
+        setMessage({ type: '', text: '' });
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
 
   // Validate token and role on mount
   useEffect(() => {
     const token = sessionStorage.getItem('authToken');
     const role = sessionStorage.getItem('userRole');
 
-    // If no token or role is not professor, redirect to login
     if (!token || role !== 'professor') {
-      sessionStorage.removeItem('authToken'); // clear any stale token
+      sessionStorage.removeItem('authToken');
       sessionStorage.removeItem('userRole');
-      navigate('/'); // redirect to root login page
+      navigate('/');
       return;
     }
 
-    // Optional: verify JWT payload for extra safety
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
       if (payload.role !== 'professor') {
@@ -114,6 +123,7 @@ const AttendancePage = () => {
       });
       if (res.data.success) {
         setReportStudents(res.data.data);
+        setHasSession(res.data.hasSession);
         if (res.data.data.length === 0) {
           setMessage({ type: 'info', text: 'No attendance records found for this date.' });
         }
@@ -271,7 +281,7 @@ const AttendancePage = () => {
                               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Enrollment No.</th>
                               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student Name</th>
                               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                              </tr>
+                            </tr>
                           </thead>
                           <tbody className="bg-white divide-y divide-gray-200">
                             {students.map(student => (
@@ -362,7 +372,13 @@ const AttendancePage = () => {
                   </button>
                 </div>
 
-                {reportStudents.length > 0 && (
+                {!loadingReport && selectedSubject && reportDate && !hasSession && (
+                  <div className="text-center py-8 text-gray-500">
+                    ⚠️ No class session was held on this date.
+                  </div>
+                )}
+
+                {!loadingReport && hasSession && reportStudents.length > 0 && (
                   <div className="overflow-x-auto border rounded-lg">
                     <table className="min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-50">
@@ -389,13 +405,13 @@ const AttendancePage = () => {
                   </div>
                 )}
 
-                {!loadingReport && reportStudents.length === 0 && selectedSubject && reportDate && (
-                  <div className="text-center py-8 text-gray-500">No attendance records found for this date.</div>
+                {!loadingReport && hasSession && reportStudents.length === 0 && selectedSubject && reportDate && (
+                  <div className="text-center py-8 text-gray-500">No students enrolled in this subject.</div>
                 )}
               </div>
             )}
 
-            {/* Global message */}
+            {/* Global message with auto-dismiss */}
             {message.text && (
               <div className={`mt-4 p-3 rounded-md flex items-center gap-2 ${
                 message.type === 'success' ? 'bg-green-100 text-green-700' : 
