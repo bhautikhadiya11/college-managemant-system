@@ -30,10 +30,10 @@ const DashBoard = () => {
   /* Count animation */
   useEffect(() => {
     const counter = setInterval(() => {
-      setStudents((p) => (p < 3200 ? p + 40 : p));
-      setCourses((p) => (p < 48 ? p + 1 : p));
-      setFaculty((p) => (p < 210 ? p + 2 : p));
-      setDepartments((p) => (p < 18 ? p + 1 : p));
+      setStudents((p) => (p < 2200 ? p + 40 : p));
+      setCourses((p) => (p < 24 ? p + 1 : p));
+      setFaculty((p) => (p < 60 ? p + 2 : p));
+      setDepartments((p) => (p < 6 ? p + 1 : p));
     }, 40);
     return () => clearInterval(counter);
   }, []);
