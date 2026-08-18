@@ -14,8 +14,8 @@ import ResetPassword from "./pages/ResetPassword";
 import VerifyOTP from "./pages/VerifyOTP";
 import ChangePassword from "./components/ChangePassword";
 
-import BBA from "./components/Departments/management/bba";
-import MBA from "./components/Departments/management/mba";
+import BBA from "./components/Departments/management/BBA";
+import MBA from "./components/Departments/management/MBA";
 import BCOM from "./components/Departments/commerce/B.com";
 import MCOM from "./components/Departments/commerce/M.com";
 import BCA from "./components/Departments/computerapplication/BCA";
