@@ -21,7 +21,7 @@ const StudentFees = () => {
       try {
         const token = sessionStorage.getItem('authToken');
         if (!token) { setError('Please log in again'); setLoading(false); return; }
-        const res = await axios.get('http://localhost:5000/api/fees/status', {
+        const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/fees/status', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.data.success) {
@@ -49,7 +49,7 @@ const StudentFees = () => {
   const downloadReceipt = (feeId) => {
     const token = sessionStorage.getItem('authToken');
     if (!token) { alert('Please log in again'); return; }
-    window.open(`http://localhost:5000/api/fees/receipt/${feeId}?token=${encodeURIComponent(token)}`, '_blank');
+    window.open(`https://cms-backend-wl7u.onrender.com/api/fees/receipt/${feeId}?token=${encodeURIComponent(token)}`, '_blank');
   };
 
   const handlePayment = async () => {
@@ -58,7 +58,7 @@ const StudentFees = () => {
     try {
       const token = sessionStorage.getItem('authToken');
       const orderRes = await axios.post(
-        'http://localhost:5000/api/fees/create-order',
+        'https://cms-backend-wl7u.onrender.com/api/fees/create-order',
         { semesters: selectedSemesters },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -75,7 +75,7 @@ const StudentFees = () => {
         order_id: orderId,
         handler: async (response) => {
           const verifyRes = await axios.post(
-            'http://localhost:5000/api/fees/verify-payment',
+            'https://cms-backend-wl7u.onrender.com/api/fees/verify-payment',
             {
               orderId: response.razorpay_order_id,
               paymentId: response.razorpay_payment_id,
@@ -85,7 +85,7 @@ const StudentFees = () => {
           );
           if (verifyRes.data.success) {
             setSuccess(`Payment successful for semesters ${selectedSemesters.join(', ')}!`);
-            const statusRes = await axios.get('http://localhost:5000/api/fees/status', {
+            const statusRes = await axios.get('https://cms-backend-wl7u.onrender.com/api/fees/status', {
               headers: { Authorization: `Bearer ${token}` }
             });
             if (statusRes.data.success) setSemesters(statusRes.data.data);

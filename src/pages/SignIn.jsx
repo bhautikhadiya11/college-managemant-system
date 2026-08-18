@@ -63,8 +63,8 @@ const SignIn = () => {
 
     try {
       const endpoint = role === "student"
-        ? "http://localhost:5000/api/auth/student/login"
-        : "http://localhost:5000/api/auth/professor/login";
+        ? "https://cms-backend-wl7u.onrender.com/api/auth/student/login"
+        : "https://cms-backend-wl7u.onrender.com/api/auth/professor/login";
 
       const payload = role === "student"
         ? { enrollmentId: userId, password }
@@ -127,7 +127,7 @@ const SignIn = () => {
       setApiError(message || `Error ${status}: Login failed. Please check your credentials.`);
     }
   } else if (error.request) {
-    setApiError("Cannot connect to server. Please check if backend is running at http://localhost:5000.");
+    setApiError("Cannot connect to server. Please check if backend is running at https://cms-backend-wl7u.onrender.com.");
   } else {
     setApiError("An unexpected error occurred. Please try again.");
   }

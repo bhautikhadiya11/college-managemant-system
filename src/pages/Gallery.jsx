@@ -13,7 +13,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/events");
+        const res = await fetch("https://cms-backend-wl7u.onrender.com/api/events");
         if (!res.ok) throw new Error("Failed to load gallery");
         const data = await res.json();
         setEvents(data);

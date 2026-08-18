@@ -119,7 +119,7 @@ const ChangePassword = () => {
     try {
       const token = localStorage.getItem("authToken");
       const res   = await axios.post(
-        "http://localhost:5000/api/auth/change-password",
+        "https://cms-backend-wl7u.onrender.com/api/auth/change-password",
         { currentPassword: form.currentPassword, newPassword: form.newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );

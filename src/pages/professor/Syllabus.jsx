@@ -256,7 +256,7 @@ const ProfessorSyllabus = () => {
   const userData = JSON.parse(sessionStorage.getItem('userData') || '{}');
 
   const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://cms-backend-wl7u.onrender.com/api',
     headers: { Authorization: `Bearer ${token}` },
   });
 

@@ -214,7 +214,7 @@ const StudentHome = () => {
   const fetchProfile = async (enrollmentNum) => {
     try {
       const token = localStorage.getItem('authToken');
-      const res   = await axios.get(`http://localhost:5000/api/student/profile/${enrollmentNum}`, {
+      const res   = await axios.get(`https://cms-backend-wl7u.onrender.com/api/student/profile/${enrollmentNum}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {

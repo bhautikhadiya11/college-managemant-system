@@ -51,7 +51,7 @@ const ProfessorAssignments = () => {
     const fetchSubjects = async () => {
       try {
         const token = sessionStorage.getItem('authToken');
-        const res = await axios.get('http://localhost:5000/api/assignments/subjects', {
+        const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/assignments/subjects', {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.data.success) {
@@ -76,7 +76,7 @@ const ProfessorAssignments = () => {
       setLoading(prev => ({ ...prev, assignments: true }));
       try {
         const token = sessionStorage.getItem('authToken');
-        const res = await axios.get(`http://localhost:5000/api/assignments/professor?subjectId=${selectedSubject}`, {
+        const res = await axios.get(`https://cms-backend-wl7u.onrender.com/api/assignments/professor?subjectId=${selectedSubject}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.data.success) {
@@ -131,7 +131,7 @@ const ProfessorAssignments = () => {
       formData.attachments.forEach(file => {
         data.append('attachments', file);
       });
-      const res = await axios.post('http://localhost:5000/api/assignments', data, {
+      const res = await axios.post('https://cms-backend-wl7u.onrender.com/api/assignments', data, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });
       if (res.data.success) {
@@ -139,7 +139,7 @@ const ProfessorAssignments = () => {
         setFormData({ title: '', description: '', dueDate: '', attachments: [] });
         setShowModal(false);
         // Refresh assignments
-        const refreshRes = await axios.get(`http://localhost:5000/api/assignments/professor?subjectId=${selectedSubject}`, {
+        const refreshRes = await axios.get(`https://cms-backend-wl7u.onrender.com/api/assignments/professor?subjectId=${selectedSubject}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (refreshRes.data.success) setAssignments(refreshRes.data.data);
@@ -158,7 +158,7 @@ const ProfessorAssignments = () => {
     if (!window.confirm('Are you sure you want to delete this assignment? This action cannot be undone.')) return;
     try {
       const token = sessionStorage.getItem('authToken');
-      await axios.delete(`http://localhost:5000/api/assignments/${id}`, {
+      await axios.delete(`https://cms-backend-wl7u.onrender.com/api/assignments/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAssignments(prev => prev.filter(a => a._id !== id));
@@ -238,14 +238,14 @@ const ProfessorAssignments = () => {
         data.append('newAttachments', file);
       });
 
-      const res = await axios.put(`http://localhost:5000/api/assignments/${editingAssignment._id}`, data, {
+      const res = await axios.put(`https://cms-backend-wl7u.onrender.com/api/assignments/${editingAssignment._id}`, data, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });
       if (res.data.success) {
         showMessage('success', 'Assignment updated successfully!');
         setShowEditModal(false);
         // Refresh assignments list
-        const refreshRes = await axios.get(`http://localhost:5000/api/assignments/professor?subjectId=${selectedSubject}`, {
+        const refreshRes = await axios.get(`https://cms-backend-wl7u.onrender.com/api/assignments/professor?subjectId=${selectedSubject}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (refreshRes.data.success) setAssignments(refreshRes.data.data);

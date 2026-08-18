@@ -708,7 +708,7 @@ const AttendancePage = () => {
     const fetchSubjects = async () => {
       try {
         const token = sessionStorage.getItem('authToken');
-        const res = await axios.get('http://localhost:5000/api/professor/attendance/subjects', {
+        const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/professor/attendance/subjects', {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.data.success) {
@@ -732,7 +732,7 @@ const AttendancePage = () => {
       setLoading(prev => ({ ...prev, students: true }));
       try {
         const token = sessionStorage.getItem('authToken');
-        const res = await axios.get(`http://localhost:5000/api/professor/attendance/subjects/${selectedSubject._id}/students`, {
+        const res = await axios.get(`https://cms-backend-wl7u.onrender.com/api/professor/attendance/subjects/${selectedSubject._id}/students`, {
           headers: { Authorization: `Bearer ${token}` },
           params: { division: attendanceDivision }
         });
@@ -762,7 +762,7 @@ const AttendancePage = () => {
       try {
         const token = sessionStorage.getItem('authToken');
         const res = await axios.get(
-          `http://localhost:5000/api/professor/attendance/subject/${selectedSubject._id}/percentage`,
+          `https://cms-backend-wl7u.onrender.com/api/professor/attendance/subject/${selectedSubject._id}/percentage`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         if (res.data.success) {
@@ -798,7 +798,7 @@ const AttendancePage = () => {
     try {
       const token = sessionStorage.getItem('authToken');
       const res = await axios.get(
-        `http://localhost:5000/api/professor/attendance/subject/${selectedSubject._id}/range`,
+        `https://cms-backend-wl7u.onrender.com/api/professor/attendance/subject/${selectedSubject._id}/range`,
         { headers: { Authorization: `Bearer ${token}` }, params: { fromDate: reportFromDate, toDate: reportToDate, division: reportDivision } }
       );
       if (res.data.success) {
@@ -830,7 +830,7 @@ const AttendancePage = () => {
     setEditSaving(true);
     try {
       const token = sessionStorage.getItem('authToken');
-      const res = await axios.put('http://localhost:5000/api/professor/attendance/edit', {
+      const res = await axios.put('https://cms-backend-wl7u.onrender.com/api/professor/attendance/edit', {
         subjectId: selectedSubject._id,
         studentId: editingRow.studentId,
         date: editDate,
@@ -876,7 +876,7 @@ const AttendancePage = () => {
     setAlreadyMarkedBanner(false);
     try {
       const token = sessionStorage.getItem('authToken');
-      const res = await axios.post('http://localhost:5000/api/professor/attendance/mark', payload, {
+      const res = await axios.post('https://cms-backend-wl7u.onrender.com/api/professor/attendance/mark', payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.data.success) {
