@@ -503,7 +503,7 @@ const styles = `
 
     .att-header { padding: 1.25rem 1rem 0; }
     .att-header-top { margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
-    .att-header-title { font-size: 1.05rem; gap: 0.4rem; }
+    .att-header-title { font-size: 1.05rem; gap: 0.4rem; padding-left: 2.75rem; }
     .att-date-badge { font-size: 0.7rem; padding: 0.3rem 0.65rem; }
 
     .att-tabs { gap: 0.15rem; overflow-x: auto; }
