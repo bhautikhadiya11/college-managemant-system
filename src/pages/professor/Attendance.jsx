@@ -647,6 +647,9 @@ const AttendancePage = () => {
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [students, setStudents] = useState([]);
   const [attendanceDate, setAttendanceDate] = useState(new Date().toISOString().split('T')[0]);
+  const [attendanceDivision, setAttendanceDivision] = useState('A');
+  const [reportDivision, setReportDivision] = useState('All');
+  const [attendanceTimeSlot, setAttendanceTimeSlot] = useState('09:00 - 10:00');
   const [attendanceStatus, setAttendanceStatus] = useState({});
   const [loading, setLoading] = useState({ subjects: true, students: false });
   const [saving, setSaving] = useState(false);
@@ -722,7 +725,7 @@ const AttendancePage = () => {
     fetchSubjects();
   }, []);
 
-  // Fetch students when subject is selected (for marking)
+  // Fetch students when subject or division is selected (for marking)
   useEffect(() => {
     if (!selectedSubject?._id) return;
     const fetchStudents = async () => {
@@ -731,6 +734,7 @@ const AttendancePage = () => {
         const token = sessionStorage.getItem('authToken');
         const res = await axios.get(`http://localhost:5000/api/professor/attendance/subjects/${selectedSubject._id}/students`, {
           headers: { Authorization: `Bearer ${token}` },
+          params: { division: attendanceDivision }
         });
         if (res.data.success) {
           const studentsData = res.data.data;
@@ -748,7 +752,7 @@ const AttendancePage = () => {
       }
     };
     fetchStudents();
-  }, [selectedSubject]);
+  }, [selectedSubject, attendanceDivision]);
 
   // Fetch attendance percentage for all students in selected subject
   useEffect(() => {
@@ -795,7 +799,7 @@ const AttendancePage = () => {
       const token = sessionStorage.getItem('authToken');
       const res = await axios.get(
         `http://localhost:5000/api/professor/attendance/subject/${selectedSubject._id}/range`,
-        { headers: { Authorization: `Bearer ${token}` }, params: { fromDate: reportFromDate, toDate: reportToDate } }
+        { headers: { Authorization: `Bearer ${token}` }, params: { fromDate: reportFromDate, toDate: reportToDate, division: reportDivision } }
       );
       if (res.data.success) {
         setReportStudents(res.data.data);
@@ -859,6 +863,8 @@ const AttendancePage = () => {
     const payload = {
       subjectId: selectedSubject._id,
       date: attendanceDate,
+      timeSlot: attendanceTimeSlot,
+      division: attendanceDivision,
       UserRole: 'professor',
       attendance: students.map(s => ({
         studentId: s._id,
@@ -1018,13 +1024,13 @@ const AttendancePage = () => {
             {/* ── Tabs ── */}
             <div className="att-tabs">
               <button
-                onClick={() => setActiveTab('mark')}
+                onClick={() => { setActiveTab('mark'); setMessage(null); }}
                 className={`att-tab ${activeTab === 'mark' ? 'active' : ''}`}
               >
                 <BookOpen size={16} /> Mark Attendance
               </button>
               <button
-                onClick={() => setActiveTab('report')}
+                onClick={() => { setActiveTab('report'); setMessage(null); }}
                 className={`att-tab ${activeTab === 'report' ? 'active' : ''}`}
               >
                 <BarChart2 size={16} /> Attendance Report
@@ -1079,11 +1085,36 @@ const AttendancePage = () => {
                         {loading.students && <span style={{ fontSize:'0.78rem', color:'#9ca3af', fontWeight:400 }}>— loading…</span>}
                       </div>
                       <div className="att-controls">
+                        <select
+                          value={attendanceDivision}
+                          onChange={(e) => setAttendanceDivision(e.target.value)}
+                          className="att-date-input"
+                        >
+                          <option value="A">Div A</option>
+                          <option value="B">Div B</option>
+                          <option value="C">Div C</option>
+                        </select>
+                        <select
+                          value={attendanceTimeSlot}
+                          onChange={(e) => setAttendanceTimeSlot(e.target.value)}
+                          className="att-date-input"
+                        >
+                          <option value="09:00 - 10:00">09:00 - 10:00</option>
+                          <option value="10:00 - 11:00">10:00 - 11:00</option>
+                          <option value="11:00 - 12:00">11:00 - 12:00</option>
+                          <option value="12:00 - 01:00">12:00 - 01:00</option>
+                          <option value="01:00 - 02:00">01:00 - 02:00</option>
+                          <option value="02:00 - 03:00">02:00 - 03:00</option>
+                          <option value="03:00 - 04:00">03:00 - 04:00</option>
+                        </select>
                         <input
                           type="date"
                           value={attendanceDate}
+                          min={new Date().toISOString().split('T')[0]}
+                          max={new Date().toISOString().split('T')[0]}
                           onChange={(e) => setAttendanceDate(e.target.value)}
                           className="att-date-input"
+                          title="Attendance can only be marked for today"
                         />
                         <button onClick={markAllPresent} className="att-btn-ghost">
                           <CheckCircle size={15} /> Mark All Present
@@ -1168,7 +1199,7 @@ const AttendancePage = () => {
                         <div>
                           <div className="att-already-banner-title">Attendance Already Marked</div>
                           <div className="att-already-banner-sub">
-                            Attendance for <strong>{selectedSubject.name}</strong> on <strong>{attendanceDate}</strong> has already been saved.
+                            Attendance for <strong>{selectedSubject.name}</strong> (Division {attendanceDivision}, Slot {attendanceTimeSlot}) on <strong>{attendanceDate}</strong> has already been saved.
                             To make corrections, use the <strong>Edit Attendance</strong> option in the Attendance Report tab.
                           </div>
                         </div>
@@ -1214,6 +1245,23 @@ const AttendancePage = () => {
                       {subjects.map(sub => (
                         <option key={sub._id} value={sub._id}>{sub.name} ({sub.code})</option>
                       ))}
+                    </select>
+                  </div>
+                  <div className="att-form-group">
+                    <label className="att-form-label">Division</label>
+                    <select
+                      value={reportDivision}
+                      onChange={(e) => {
+                        setReportDivision(e.target.value);
+                        setReportStudents([]);
+                        setReportFetched(false);
+                      }}
+                      className="att-form-select"
+                    >
+                      <option value="All">All Divisions</option>
+                      <option value="A">Div A</option>
+                      <option value="B">Div B</option>
+                      <option value="C">Div C</option>
                     </select>
                   </div>
                   <div className="att-form-group">
