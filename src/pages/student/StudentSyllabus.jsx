@@ -90,7 +90,7 @@ const StudentSyllabus = () => {
   const userRole = sessionStorage.getItem('userRole');
   const userData = JSON.parse(sessionStorage.getItem('userData') || '{}');
 
-  const api = axios.create({ baseURL:'http://localhost:5000/api', headers:{ Authorization:`Bearer ${token}` } });
+  const api = axios.create({ baseURL:'https://cms-backend-wl7u.onrender.com/api', headers:{ Authorization:`Bearer ${token}` } });
 
   useEffect(() => {
     if (!token || userRole !== 'student') { setError('Access denied. Please log in as a student.'); return; }

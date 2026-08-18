@@ -486,7 +486,7 @@ const StudentAttendance = () => {
       }
 
       try {
-        const res = await axios.get('http://localhost:5000/api/student/attendance', {
+        const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/student/attendance', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -542,7 +542,7 @@ const StudentAttendance = () => {
     try {
       const token = sessionStorage.getItem('authToken');
       const res = await axios.get(
-        `http://localhost:5000/api/student/attendance/subject/${subjectId}/detail`,
+        `https://cms-backend-wl7u.onrender.com/api/student/attendance/subject/${subjectId}/detail`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (res.data.success) {

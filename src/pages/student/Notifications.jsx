@@ -83,7 +83,7 @@ const StudentNotifications = () => {
       const token = sessionStorage.getItem('authToken');
       if (!token) { setError('Please log in again.'); setLoading(false); return; }
       try {
-        const res = await axios.get('http://localhost:5000/api/notifications', { headers: { Authorization: `Bearer ${token}` } });
+        const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/notifications', { headers: { Authorization: `Bearer ${token}` } });
         if (res.data.success) setNotifications(res.data.data);
         else setError('Failed to load notifications');
       } catch (err) {
@@ -99,7 +99,7 @@ const StudentNotifications = () => {
     if (!unreadIds.length) return;
     const token = sessionStorage.getItem('authToken');
     if (!token) return;
-    Promise.all(unreadIds.map(id => axios.put(`http://localhost:5000/api/notifications/${id}/read`, {}, { headers: { Authorization: `Bearer ${token}` } }).catch(() => {})));
+    Promise.all(unreadIds.map(id => axios.put(`https://cms-backend-wl7u.onrender.com/api/notifications/${id}/read`, {}, { headers: { Authorization: `Bearer ${token}` } }).catch(() => {})));
     setNotifications(prev => prev.map(n => unreadIds.includes(n._id) ? { ...n, isRead: true } : n));
   }, [notifications.length]);
 

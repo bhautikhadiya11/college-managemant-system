@@ -159,7 +159,7 @@ const StudentLayout = () => {
     try {
       const token = sessionStorage.getItem('authToken');
       if (!token) return;
-      const res = await axios.get('http://localhost:5000/api/notifications/unread-count', {
+      const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/notifications/unread-count', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) setUnread(res.data.count);

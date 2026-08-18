@@ -36,7 +36,7 @@ const Gallery = () => {
   const [loading, setLoading]         = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/events')
+    fetch('https://cms-backend-wl7u.onrender.com/api/events')
       .then(r => r.json())
       .then(d => setEvents(Array.isArray(d) ? d : []))
       .catch(() => {})

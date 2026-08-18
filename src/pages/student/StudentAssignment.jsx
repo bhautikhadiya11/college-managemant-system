@@ -101,7 +101,7 @@ const StudentAssignments = () => {
       const token = sessionStorage.getItem('authToken');
       if (!token) { setError('No authentication token. Please log in again.'); setLoading(false); return; }
       try {
-        const res = await axios.get('http://localhost:5000/api/assignments/student', { headers: { Authorization: `Bearer ${token}` } });
+        const res = await axios.get('https://cms-backend-wl7u.onrender.com/api/assignments/student', { headers: { Authorization: `Bearer ${token}` } });
         if (res.data.success) setAssignments(res.data.data);
         else setError(res.data.message);
       } catch (err) {

@@ -256,7 +256,7 @@ const ProfessorHome = () => {
   const fetchCompleteProfile = async (email) => {
     try {
       const token = localStorage.getItem('authToken');
-      const response = await axios.get(`http://localhost:5000/api/professor/profile/${email}`, {
+      const response = await axios.get(`https://cms-backend-wl7u.onrender.com/api/professor/profile/${email}`, {
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
       if (response.data.success) return response.data.data;
