@@ -193,7 +193,7 @@ const StudentSyllabus = () => {
                     <div className="sy-att-grid">
                       {selectedSyllabus.attachments.map((url, idx) => (
                         <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="sy-att-item">
-                          📄 {url.split('/').pop()}
+                          📄 <span style={{overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{url.split('/').pop()}</span>
                         </a>
                       ))}
                     </div>

@@ -81,6 +81,7 @@ const styles = `
   .pl-sidebar-footer {
     border-top: 1px solid rgba(255,255,255,0.08);
     padding-top: 1rem;
+    padding-bottom: 1.5rem;
     color: rgba(148,163,184,0.5);
     font-size: 0.65rem; font-weight: 500;
     letter-spacing: 0.06em; text-transform: uppercase;
