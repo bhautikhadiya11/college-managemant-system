@@ -130,14 +130,15 @@ const styles = `
   @media (max-width: 768px) {
     .pl-sidebar { transform: translateX(-100%); width: 240px; }
     .pl-sidebar.open { transform: translateX(0); }
-    .pl-main { margin-left: 0; }
-    .pl-main-inner { padding: 1rem; padding-top: 4rem; }
+    .pl-main { margin-left: 0; width: 100%; max-width: 100vw; overflow-x: hidden; }
+    .pl-main-inner { padding: 1rem; padding-top: 4rem; overflow-x: hidden; }
     .pl-hamburger { display: flex; }
   }
 
   @media (max-width: 480px) {
-    .pl-main-inner { padding: 0.75rem; padding-top: 4rem; }
+    .pl-main-inner { padding: 0.75rem; padding-top: 3.5rem; }
     .pl-logo-text { font-size: 0.95rem; }
+    .pl-hamburger { top: 0.5rem; left: 0.5rem; }
   }
 `;
 
