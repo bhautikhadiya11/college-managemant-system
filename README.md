@@ -44,7 +44,7 @@ Welcome to the frontend portal of **CampusFlow**, an advanced College Management
    ```
 
 ## 🌐 Live Preview
-*Deploy this repository to Vercel/Netlify for a live preview.*
+Check out the live application here: **[CampusFlow Portal](https://campusflow-hub.vercel.app)**
 
 ---
 *Built with ❤️ by the CampusFlow Team.*
