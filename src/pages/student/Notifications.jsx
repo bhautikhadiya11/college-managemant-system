@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import PageLoader from '../../components/PageLoader';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
@@ -105,10 +106,7 @@ const StudentNotifications = () => {
 
   const fmtDate = (d) => new Date(d).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
 
-  if (loading) return (
-    <><style>{styles}</style>
-    <div className="sn-root sn-loading"><div className="sn-spinner" /></div></>
-  );
+  if (loading) return <PageLoader text="Loading notifications..." />;
 
   if (error) return (
     <><style>{styles}</style>

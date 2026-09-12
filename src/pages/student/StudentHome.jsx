@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import PageLoader from '../../components/PageLoader';
 
 /* ─── Styles — mirrors ProfessorHome exactly ───────────────────────────── */
 const styles = `
@@ -237,15 +238,7 @@ const StudentHome = () => {
   const navigateToAssignments  = () => navigate('/student/assignments');
   const navigateToChangePass   = () => navigate('/student/change-password');
 
-  if (loading) return (
-    <>
-      <style>{styles}</style>
-      <div className="sh-root sh-center">
-        <div className="sh-spinner" />
-        <span className="sh-load-text">Loading dashboard…</span>
-      </div>
-    </>
-  );
+  if (loading) return <PageLoader text="Loading dashboard..." />;
 
   if (!studentData) return (
     <>

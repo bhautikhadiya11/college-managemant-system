@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, CheckCircle, AlertCircle } from 'lucide-react';
+import PageLoader from '../../components/PageLoader';
 
 /* ─── Styles ──────────────────────────────────────────────── */
 const styles = `
@@ -556,19 +557,7 @@ const StudentAttendance = () => {
   };
 
   /* ── loading ── */
-  if (loading) {
-    return (
-      <>
-        <style>{styles}</style>
-        <div className="sa-root">
-          <div className="sa-loading">
-            <div className="sa-spinner" />
-            <span className="sa-loading-text">Loading your attendance…</span>
-          </div>
-        </div>
-      </>
-    );
-  }
+  if (loading) return <PageLoader text="Loading your attendance..." />;
 
   /* ── error ── */
   if (error) {

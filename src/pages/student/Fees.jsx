@@ -118,11 +118,7 @@ const StudentFees = () => {
   const paid   = semesters.filter(s => s.paid);
   const unpaid = semesters.filter(s => !s.paid);
 
-  if (loading) return (
-    <div className="flex items-center justify-center min-h-[50vh]">
-      <Loader2 className="animate-spin w-8 h-8 text-blue-600" />
-    </div>
-  );
+  if (loading) return <PageLoader text="Loading fee details..." />;
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
@@ -249,3 +245,4 @@ const StudentFees = () => {
 };
 
 export default StudentFees;
+

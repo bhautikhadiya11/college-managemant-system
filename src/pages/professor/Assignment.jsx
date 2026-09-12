@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Plus, FileText, Calendar, Trash2, Download, X, Paperclip, Clock, Edit } from 'lucide-react';
+import PageLoader from '../../components/PageLoader';
 
 const ProfessorAssignments = () => {
   const navigate = useNavigate();
@@ -273,7 +274,7 @@ const ProfessorAssignments = () => {
 
         {/* Subject Cards */}
         {loading.subjects ? (
-          <div className="text-center py-8">Loading subjects...</div>
+          <PageLoader text="Loading subjects..." />
         ) : subjects.length === 0 ? (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
             <p className="text-yellow-700">No subjects assigned to you. Please contact administrator.</p>
@@ -326,7 +327,7 @@ const ProfessorAssignments = () => {
 
             {/* Assignments List */}
             {loading.assignments ? (
-              <div className="text-center py-8">Loading assignments...</div>
+              <PageLoader text="Loading assignments..." />
             ) : assignments.length === 0 ? (
               <div className="bg-gray-50 rounded-xl p-12 text-center">
                 <FileText size={48} className="mx-auto text-gray-400 mb-3" />

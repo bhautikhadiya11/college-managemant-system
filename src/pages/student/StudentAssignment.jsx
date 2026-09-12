@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import PageLoader from '../../components/PageLoader';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -111,10 +112,7 @@ const StudentAssignments = () => {
     })();
   }, [navigate]);
 
-  if (loading) return (
-    <><style>{styles}</style>
-    <div className="sa-root sa-loading"><div className="sa-spinner" /></div></>
-  );
+  if (loading) return <PageLoader text="Loading assignments..." />;
 
   if (error) return (
     <><style>{styles}</style>

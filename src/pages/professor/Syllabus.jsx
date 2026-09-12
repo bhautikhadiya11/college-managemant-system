@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Eye, Edit2, Trash2, Plus, X, FileText, Loader2, CheckCircle } from 'lucide-react';
+import PageLoader from '../../components/PageLoader';
 
 /* ─── Styles ─────────────────────────────────────────────── */
 const styles = `
@@ -357,7 +358,7 @@ const ProfessorSyllabus = () => {
   const removeAttachment = (urlToRemove) => { setFormData(prev => ({ ...prev, attachments: prev.attachments.filter(url => url !== urlToRemove) })); };
   const removeTempFile = (index) => { setTempFiles(prev => prev.filter((_, i) => i !== index)); };
 
-  if (loading) return <><style>{styles}</style><div className="ps-root ps-state"><div className="ps-spinner" /><span style={{ color:'#9ca3af', fontSize:'0.9rem' }}>Loading subjects…</span></div></>;
+  if (loading) return <PageLoader text="Loading subjects..." />;
   if (error) return <><style>{styles}</style><div className="ps-root ps-state"><p style={{ color:'#dc2626', fontWeight:500 }}>{error}</p></div></>;
   if (subjects.length === 0) return <><style>{styles}</style><div className="ps-root ps-state"><p style={{ color:'#9ca3af' }}>No subjects assigned to you. Please contact admin.</p></div></>;
 

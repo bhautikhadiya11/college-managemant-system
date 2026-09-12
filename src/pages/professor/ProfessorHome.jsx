@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import PageLoader from '../../components/PageLoader';
 
 /* ─── Styles ───────────────────────────────────────────── */
 const styles = `
@@ -328,17 +329,7 @@ const ProfessorHome = () => {
   const handleLogout = () => { localStorage.clear(); navigate('/signin'); };
   const navigateToChangePassword = () => navigate('/professor/change-password');
 
-  if (loading) {
-    return (
-      <>
-        <style>{styles}</style>
-        <div className="ph-root ph-center">
-          <div className="ph-spinner" />
-          <span className="ph-load-text">Loading dashboard…</span>
-        </div>
-      </>
-    );
-  }
+  if (loading) return <PageLoader text="Loading dashboard..." />;
 
   if (!professorData) {
     return (
