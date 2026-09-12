@@ -145,7 +145,10 @@ const SignIn = () => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleSubmit();
-    }  return (
+    }
+  };
+
+  return (
     <div className="relative min-h-screen flex items-center justify-center
       bg-[#f0f4ff] px-4 sm:px-6">
 
