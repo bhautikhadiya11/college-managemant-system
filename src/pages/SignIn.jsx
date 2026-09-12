@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Eye, EyeOff, Facebook, Instagram, Youtube } from "lucide-react";
+import { Eye, EyeOff, Facebook, Instagram, Youtube, GraduationCap, AlertCircle } from "lucide-react";
 import axios from "axios";
 
 const SignIn = () => {
