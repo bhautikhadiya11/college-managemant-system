@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { LayoutDashboard, CalendarCheck, BookOpen, Bell, Image, ClipboardList, CreditCard, Menu, X, GraduationCap } from "lucide-react";
 import axios from "axios";
+import PageLoader from '../../components/PageLoader';
 
 /* ─── Styles — matches ProfessorLayout exactly ─────────────────────────── */
 const styles = `

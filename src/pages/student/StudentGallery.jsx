@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import GalleryCard  from "../../components/GalleryCard";
 import GalleryModal from "../../components/GalleryModal";
+import PageLoader from '../../components/PageLoader';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
@@ -43,10 +44,7 @@ const Gallery = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return (
-    <><style>{styles}</style>
-    <div className="sg-root sg-loading"><div className="sg-spinner" /></div></>
-  );
+  if (loading) return <PageLoader text="Loading gallery..." />;
 
   return (
     <>

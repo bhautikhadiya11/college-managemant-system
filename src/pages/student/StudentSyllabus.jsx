@@ -1,6 +1,7 @@
 // src/student/StudentSyllabus.jsx
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PageLoader from '../../components/PageLoader';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -116,10 +117,7 @@ const StudentSyllabus = () => {
     setModalOpen(true);
   };
 
-  if (loading) return (
-    <><style>{styles}</style>
-    <div className="sy-root sy-loading"><div className="sy-spinner" /></div></>
-  );
+  if (loading) return <PageLoader text="Loading syllabus..." />;
 
   if (error) return (
     <><style>{styles}</style>

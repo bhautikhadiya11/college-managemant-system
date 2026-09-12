@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, AlertCircle, Save, BarChart2, BookOpen, Users, Calendar, TrendingUp, X, Pencil, FileDown, FileSpreadsheet } from 'lucide-react';
+import PageLoader from '../../components/PageLoader';
 
 /* ─── Design tokens ─────────────────────────────────────── */
 const styles = `
