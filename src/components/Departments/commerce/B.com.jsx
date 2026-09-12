@@ -20,7 +20,7 @@ const BCOM = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[625px] md:h-[725px]">
         <img
-          src="https://images.pexels.com/photos/4386367/pexels-photo-4386367.jpeg"
+          src="https://images.pexels.com/photos/4386367/pexels-photo-4386367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="BCOM Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -55,7 +55,7 @@ const BCOM = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/4386373/pexels-photo-4386373.jpeg"
+            src="https://images.pexels.com/photos/4386373/pexels-photo-4386373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="About BCOM"
             className="w-full h-full object-cover"
           />
@@ -166,17 +166,17 @@ const BCOM = () => {
             {[
               {
                 title: "Commerce & Finance Club",
-                img: "https://images.pexels.com/photos/4386371/pexels-photo-4386371.jpeg",
+                img: "https://images.pexels.com/photos/4386371/pexels-photo-4386371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Focuses on accounting practices, financial analysis, stock market awareness, and commerce-based activities.",
               },
               {
                 title: "Entrepreneurship Cell",
-                img: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+                img: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Encourages innovation, startup ideas, and entrepreneurial mindset through workshops and mentoring.",
               },
               {
                 title: "Cultural & Sports Club",
-                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg",
+                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Promotes holistic development through cultural programs, sports events, and inter-college competitions.",
               },
             ].map((club, i) => (
@@ -211,17 +211,17 @@ const BCOM = () => {
           {[
             {
               title: "Inter-College Commerce Competitions",
-              img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+              img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "B.Com students participated and won awards in accounting quizzes and commerce competitions.",
             },
             {
               title: "Industry & Banking Guest Lectures",
-              img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
+              img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Guest lectures by finance professionals, bankers, and chartered accountants.",
             },
             {
               title: "Financial Literacy & Tax Workshops",
-              img: "https://images.pexels.com/photos/5915230/pexels-photo-5915230.jpeg",
+              img: "https://images.pexels.com/photos/5915230/pexels-photo-5915230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Workshops conducted on taxation, investment planning, and financial awareness.",
             },
           ].map((item, i) => (

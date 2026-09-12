@@ -80,7 +80,7 @@ const About = () => {
       {/* RIGHT IMAGE (NEW WORKING IMAGE) */}
       <div>
         <img
-          src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg"
+          src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Students Collaboration"
           className="rounded-xl shadow-2xl w-full object-cover"
         />
@@ -112,7 +112,7 @@ const About = () => {
       <section className="bg-gray-100 py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-10 md:grid-cols-2 items-center">
           <img
-            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1260&q=70"
             alt="Problems"
             className="rounded-xl shadow-lg w-full"
           />
@@ -138,12 +138,12 @@ const About = () => {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: "Student Management", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f" },
-            { title: "Faculty Management", img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df" },
-            { title: "Attendance System", img: "https://images.unsplash.com/photo-1509062522246-3755977927d7" },
-            { title: "Notice & Communication", img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2" },
-            { title: "Academic Planning", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" },
-            { title: "Admin Dashboard", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71" },
+            { title: "Student Management", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1260&q=70" },
+            { title: "Faculty Management", img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1260&q=70" },
+            { title: "Attendance System", img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1260&q=70" },
+            { title: "Notice & Communication", img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1260&q=70" },
+            { title: "Academic Planning", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1260&q=70" },
+            { title: "Admin Dashboard", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1260&q=70" },
           ].map((m, i) => (
             <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden">
               <img src={m.img} alt={m.title} className="h-40 sm:h-44 w-full object-cover" />
@@ -175,7 +175,7 @@ const About = () => {
             </ol>
           </div>
           <img
-            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80"
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea98?auto=format&fit=crop&w=1260&q=704?auto=format&fit=crop&w=1600&q=80"
             alt="Workflow"
             className="rounded-xl shadow-lg w-full"
           />
@@ -203,7 +203,7 @@ const About = () => {
       </div>
 
       <img
-        src="https://images.pexels.com/photos/7666429/pexels-photo-7666429.jpeg"
+        src="https://images.pexels.com/photos/7666429/pexels-photo-7666429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Mission Campus Flow"
         className="rounded-xl shadow-lg w-full object-cover"
       />
@@ -212,7 +212,7 @@ const About = () => {
     {/* VISION */}
     <div className="grid gap-12 md:grid-cols-2 items-center">
       <img
-        src="https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg"
+        src="https://images.pexels.com/photos/355952/pexels-photo-355952.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Vision Campus Flow"
         className="rounded-xl shadow-lg w-full object-cover"
       />

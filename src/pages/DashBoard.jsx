@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 /* Your original slider images */
 const sliderImages = [
-  "https://images.unsplash.com/photo-1592930954854-7d00c87d0cf4",
-  "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3",
-  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
+  "https://images.unsplash.com/photo-1592930954854-7d00c87d0cf4?auto=format&fit=crop&w=1260&q=70",
+  "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1260&q=70",
+  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1260&q=70",
   "https://plus.unsplash.com/premium_photo-1684713510655-e6e31536168d",
 ];
 
@@ -104,7 +104,7 @@ const DashBoard = () => {
         <section className="px-10 py-16 bg-white">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <img
-              src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+              src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1260&q=70"
               alt="Campus Flow"
               className="rounded-xl shadow-lg w-full"
             />
@@ -143,7 +143,7 @@ const DashBoard = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" alt="Campus Flow User" className="rounded-xl shadow-xl w-[300px] md:w-[340px]" />
+              <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=1260&q=70" alt="Campus Flow User" className="rounded-xl shadow-xl w-[300px] md:w-[340px]" />
             </div>
             <div className="space-y-10">
               <div>
@@ -166,13 +166,13 @@ const DashBoard = () => {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <img
-                src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b"
+                src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1260&q=70"
                 alt="Campus Life Event"
                 onClick={() => navigate("/gallery", { state: { scrollTop: true } })}
                 className="w-full h-[320px] object-cover rounded-2xl shadow-md cursor-pointer hover:scale-[1.02] transition"
               />
               <img
-                src="https://images.pexels.com/photos/6146978/pexels-photo-6146978.jpeg"
+                src="https://images.pexels.com/photos/6146978/pexels-photo-6146978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt="Student Interaction"
                 onClick={() => navigate("/gallery", { state: { scrollTop: true } })}
                 className="w-full h-[320px] object-cover rounded-2xl shadow-md cursor-pointer hover:scale-[1.02] transition"

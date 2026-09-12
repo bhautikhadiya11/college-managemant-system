@@ -1,14 +1,18 @@
-// src/pages/Gallery.jsx (or wherever your public gallery is)
+// src/pages/Gallery.jsx
 import { useState, useEffect } from "react";
 import GalleryCard from "../components/GalleryCard";
 import GalleryModal from "../components/GalleryModal";
-import { Calendar, Image as ImageIcon, AlertCircle, Loader2 } from "lucide-react";
+import { Calendar, Image as ImageIcon, AlertCircle, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Gallery = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -70,6 +74,11 @@ const Gallery = () => {
     );
   }
 
+  // Pagination logic
+  const totalPages = Math.ceil(events.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentEvents = events.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <div className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -85,8 +94,8 @@ const Gallery = () => {
         </div>
 
         {/* Responsive grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr">
-          {events.map((event) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-fr mb-10">
+          {currentEvents.map((event) => (
             <GalleryCard
               key={event._id}
               event={event}
@@ -94,6 +103,51 @@ const Gallery = () => {
             />
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center space-x-2 mt-8">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className={`p-2 rounded-lg flex items-center justify-center transition-all ${
+                currentPage === 1 
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                : 'bg-white text-indigo-600 shadow-md hover:bg-indigo-50 cursor-pointer'
+              }`}
+            >
+              <ChevronLeft size={20} />
+            </button>
+            
+            <div className="flex items-center space-x-1">
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`w-10 h-10 rounded-lg font-semibold text-sm transition-all cursor-pointer ${
+                    currentPage === i + 1
+                    ? 'bg-indigo-600 text-white shadow-md transform scale-105'
+                    : 'bg-white text-gray-600 shadow-sm hover:bg-gray-50'
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className={`p-2 rounded-lg flex items-center justify-center transition-all ${
+                currentPage === totalPages 
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                : 'bg-white text-indigo-600 shadow-md hover:bg-indigo-50 cursor-pointer'
+              }`}
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        )}
 
         {/* Modal */}
         {selectedEvent && (

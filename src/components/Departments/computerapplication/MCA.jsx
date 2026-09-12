@@ -19,7 +19,7 @@ const MCA = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[620px] md:h-[720px]">
         <img
-          src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg"
+          src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="MCA Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -52,7 +52,7 @@ const MCA = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/34804003/pexels-photo-34804003.jpeg"
+            src="https://images.pexels.com/photos/34804003/pexels-photo-34804003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="About MCA"
             className="w-full h-full object-cover"
           />
@@ -164,17 +164,17 @@ const MCA = () => {
             {[
               {
                 title: "Advanced Coding Club",
-                img: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
+                img: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Enhances advanced programming skills through coding challenges, hackathons, and collaborative projects.",
               },
               {
                 title: "AI & Data Science Club",
-                img: "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg",
+                img: "https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Focuses on artificial intelligence, data science projects, research discussions, and innovation activities.",
               },
               {
                 title: "Cyber & Cloud Club",
-                img: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
+                img: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Promotes knowledge in cyber security, cloud platforms, ethical hacking, and emerging IT technologies.",
               },
             ].map((club, i) => (
@@ -209,17 +209,17 @@ const MCA = () => {
           {[
             {
               title: "National Hackathons & Coding Challenges",
-              img: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg",
+              img: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "MCA students participated and secured top positions in national-level hackathons and coding competitions.",
             },
             {
               title: "Industry-Oriented Tech Workshops",
-              img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+              img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Workshops conducted on cloud computing, AI tools, cyber security, and software development frameworks.",
             },
             {
               title: "Research & Innovation Projects",
-              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
+              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Students developed innovative applications and research projects addressing real-world technology challenges.",
             },
           ].map((item, i) => (

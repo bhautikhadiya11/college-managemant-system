@@ -19,7 +19,7 @@ const MCOM = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[620px] md:h-[720px]">
         <img
-          src="https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg"
+          src="https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="MCom Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -52,7 +52,7 @@ const MCOM = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/4386379/pexels-photo-4386379.jpeg"
+            src="https://images.pexels.com/photos/4386379/pexels-photo-4386379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="About MCom"
             className="w-full h-full object-cover"
           />
@@ -163,17 +163,17 @@ const MCOM = () => {
             {[
               {
                 title: "Finance & Investment Club",
-                img: "https://images.pexels.com/photos/4386369/pexels-photo-4386369.jpeg",
+                img: "https://images.pexels.com/photos/4386369/pexels-photo-4386369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Focuses on financial markets, investment analysis, portfolio management, and corporate finance discussions.",
               },
               {
                 title: "Research & Academic Forum",
-                img: "https://images.pexels.com/photos/4386345/pexels-photo-4386345.jpeg",
+                img: "https://images.pexels.com/photos/4386345/pexels-photo-4386345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Encourages academic research, paper presentations, seminars, and scholarly discussions.",
               },
               {
                 title: "Cultural & Wellness Club",
-                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg",
+                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Promotes balance through cultural programs, sports activities, and wellness initiatives.",
               },
             ].map((club, i) => (
@@ -208,17 +208,17 @@ const MCOM = () => {
           {[
             {
               title: "National Commerce Conferences",
-              img: "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg",
+              img: "https://images.pexels.com/photos/3184301/pexels-photo-3184301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Students presented research papers and participated in national-level commerce and finance conferences.",
             },
             {
               title: "Professional Certification Workshops",
-              img: "https://images.pexels.com/photos/4386372/pexels-photo-4386372.jpeg",
+              img: "https://images.pexels.com/photos/4386372/pexels-photo-4386372.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Workshops conducted on CA, CS, CMA, and financial certification pathways.",
             },
             {
               title: "Industry Interaction Programs",
-              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
+              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Interactive sessions with industry experts, bankers, and finance professionals.",
             },
           ].map((item, i) => (

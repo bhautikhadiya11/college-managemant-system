@@ -20,7 +20,7 @@ const MBA = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[625px] md:h-[725px]">
         <img
-          src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+          src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="MBA Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -55,7 +55,7 @@ const MBA = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg"
+            src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="About MBA"
             className="w-full h-full object-cover"
           />
@@ -163,17 +163,17 @@ const MBA = () => {
             {[
               {
                 title: "Leadership & Management Club",
-                img: "https://images.pexels.com/photos/3184638/pexels-photo-3184638.jpeg",
+                img: "https://images.pexels.com/photos/3184638/pexels-photo-3184638.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Enhances leadership, communication, and managerial skills through activities and competitions.",
               },
               {
                 title: "Entrepreneurship Cell",
-                img: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg",
+                img: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Promotes startup culture through idea pitching, mentoring, and innovation challenges.",
               },
               {
                 title: "Cultural & Sports Club",
-                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg",
+                img: "https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Encourages holistic development through cultural events, sports, and team-building activities.",
               },
             ].map((club, i) => (
@@ -208,17 +208,17 @@ const MBA = () => {
           {[
             {
               title: "National Case Study Competitions",
-              img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+              img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "MBA students secured top positions in national-level case study and management competitions.",
             },
             {
               title: "Corporate Guest Lectures",
-              img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg",
+              img: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Regular expert talks by industry leaders to bridge the gap between academia and industry.",
             },
             {
               title: "Startup & Innovation Summits",
-              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
+              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Students actively participated in startup summits, innovation challenges, and business conclaves.",
             },
           ].map((item, i) => (
