@@ -19,7 +19,7 @@ const BCA = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[620px] md:h-[720px]">
         <img
-          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="BCA Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -52,7 +52,7 @@ const BCA = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg"
+            src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="About BCA"
             className="w-full h-full object-cover"
           />
@@ -161,17 +161,17 @@ const BCA = () => {
             {[
               {
                 title: "Coding & Development Club",
-                img: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg",
+                img: "https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Enhances programming skills through coding challenges, hackathons, and project-based learning.",
               },
               {
                 title: "Cyber & Tech Club",
-                img: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg",
+                img: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Focuses on cyber security awareness, ethical hacking sessions, and emerging technology discussions.",
               },
               {
                 title: "Innovation & Robotics Club",
-                img: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg",
+                img: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 desc: "Encourages creativity, innovation, robotics projects, and tech-based problem solving.",
               },
             ].map((club, i) => (
@@ -206,17 +206,17 @@ const BCA = () => {
           {[
             {
               title: "National Coding Competitions",
-              img: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg",
+              img: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "BCA students participated and secured top ranks in inter-college coding and hackathon events.",
             },
             {
               title: "Industry Tech Workshops",
-              img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+              img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Hands-on workshops conducted on web development, cloud platforms, and modern technologies.",
             },
             {
               title: "Startup & Innovation Events",
-              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg",
+              img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
               desc: "Students showcased innovative ideas and software solutions in startup and innovation programs.",
             },
           ].map((item, i) => (

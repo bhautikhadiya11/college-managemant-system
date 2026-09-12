@@ -20,7 +20,7 @@ const BBA = () => {
       {/* ================= TOP BAR WITH BACKGROUND IMAGE ================= */}
       <div className="relative w-full h-[625px] md:h-[725px]">
         <img
-          src="https://images.pexels.com/photos/7691694/pexels-photo-7691694.jpeg"
+          src="https://images.pexels.com/photos/7691694/pexels-photo-7691694.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="BBA Background"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -55,7 +55,7 @@ const BBA = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 w-full">
           <img
-            src="https://images.pexels.com/photos/5905557/pexels-photo-5905557.jpeg"
+            src="https://images.pexels.com/photos/5905557/pexels-photo-5905557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="About BBA"
             className="w-full h-full object-cover"
           />
@@ -163,7 +163,7 @@ const BBA = () => {
       {/* Club 1 */}
       <div className="bg-white rounded-xl shadow hover:shadow-md transition">
         <img
-          src="https://images.pexels.com/photos/3184638/pexels-photo-3184638.jpeg"
+          src="https://images.pexels.com/photos/3184638/pexels-photo-3184638.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Management Club"
           className="w-full h-48 object-cover rounded-t-xl"
         />
@@ -183,7 +183,7 @@ const BBA = () => {
       {/* Club 2 */}
       <div className="bg-white rounded-xl shadow hover:shadow-md transition">
         <img
-          src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg"
+          src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Entrepreneurship Cell"
           className="w-full h-48 object-cover rounded-t-xl"
         />
@@ -203,7 +203,7 @@ const BBA = () => {
       {/* Club 3 */}
       <div className="bg-white rounded-xl shadow hover:shadow-md transition">
         <img
-          src="https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg"
+          src="https://images.pexels.com/photos/3182796/pexels-photo-3182796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Cultural & Sports Club"
           className="w-full h-48 object-cover rounded-t-xl"
         />
@@ -237,7 +237,7 @@ const BBA = () => {
     {/* Achievement 1 */}
     <div className="bg-white rounded-xl shadow hover:shadow-md transition">
       <img
-        src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+        src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Management Fest"
         className="w-full h-48 object-cover rounded-t-xl"
       />
@@ -256,7 +256,7 @@ const BBA = () => {
     {/* Achievement 2 */}
     <div className="bg-white rounded-xl shadow hover:shadow-md transition">
       <img
-        src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg"
+        src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Guest Lecture"
         className="w-full h-48 object-cover rounded-t-xl"
       />
@@ -275,7 +275,7 @@ const BBA = () => {
     {/* Achievement 3 */}
     <div className="bg-white rounded-xl shadow hover:shadow-md transition">
       <img
-        src="https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg"
+        src="https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         alt="Startup Event"
         className="w-full h-48 object-cover rounded-t-xl"
       />

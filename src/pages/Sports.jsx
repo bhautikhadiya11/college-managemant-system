@@ -33,11 +33,11 @@ const Sports = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center">
 
           {[
-            { id: "cricket", name: "Cricket", img: "https://images.pexels.com/photos/11204757/pexels-photo-11204757.jpeg" },
-            { id: "football", name: "Football", img: "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg" },
-            { id: "tennis", name: "Tennis", img: "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg" },
-            { id: "badminton", name: "Badminton", img: "https://images.pexels.com/photos/3660204/pexels-photo-3660204.jpeg" },
-            { id: "athletics", name: "Athletics", img: "https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg" },
+            { id: "cricket", name: "Cricket", img: "https://images.pexels.com/photos/11204757/pexels-photo-11204757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+            { id: "football", name: "Football", img: "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+            { id: "tennis", name: "Tennis", img: "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+            { id: "badminton", name: "Badminton", img: "https://images.pexels.com/photos/3660204/pexels-photo-3660204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+            { id: "athletics", name: "Athletics", img: "https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
           ].map((sport) => (
             <button
               key={sport.id}
@@ -61,7 +61,7 @@ const Sports = () => {
       <section id="cricket" className="max-w-6xl mx-auto px-6 py-24 mb-32">
         <SportBlock
           title="Cricket"
-          img="https://images.pexels.com/photos/11204757/pexels-photo-11204757.jpeg"
+          img="https://images.pexels.com/photos/11204757/pexels-photo-11204757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           reverse={false}
           content={[
             "Cricket is the backbone of our campus sports culture, engaging students throughout the academic year with structured practice sessions and competitive matches.",
@@ -81,7 +81,7 @@ const Sports = () => {
       <section id="football" className="max-w-6xl mx-auto px-6 py-24 mb-32">
         <SportBlock
           title="Football"
-          img="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg"
+          img="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           reverse={true}
           content={[
             "Football on campus represents unity, stamina, and tactical excellence, encouraging students to perform under pressure.",
@@ -101,7 +101,7 @@ const Sports = () => {
       <section id="tennis" className="max-w-6xl mx-auto px-6 py-24 mb-32">
         <SportBlock
           title="Tennis"
-          img="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg"
+          img="https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           reverse={false}
           content={[
             "Tennis builds individual excellence, mental toughness, and sharp reflexes among students.",
@@ -121,7 +121,7 @@ const Sports = () => {
       <section id="badminton" className="max-w-6xl mx-auto px-6 py-24 mb-32">
         <SportBlock
           title="Badminton"
-          img="https://images.pexels.com/photos/3660204/pexels-photo-3660204.jpeg"
+          img="https://images.pexels.com/photos/3660204/pexels-photo-3660204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           reverse={true}
           content={[
             "Badminton enhances speed, balance, and reflexes while keeping students physically active.",
@@ -141,7 +141,7 @@ const Sports = () => {
       <section id="athletics" className="max-w-6xl mx-auto px-6 py-24 mb-24">
         <SportBlock
           title="Athletics"
-          img="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg"
+          img="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           reverse={false}
           content={[
             "Athletics form the foundation of physical fitness on campus, promoting strength, endurance, and perseverance.",
